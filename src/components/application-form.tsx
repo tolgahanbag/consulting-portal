@@ -45,21 +45,23 @@ export function ApplicationForm() {
 
   if (submitted) {
     return (
-      <div className="text-center py-12 bg-green-50 rounded-xl">
-        <svg
-          className="w-16 h-16 text-green-500 mx-auto mb-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <p className="text-lg font-medium text-green-800">
+      <div className="text-center py-16 glass-card rounded-2xl">
+        <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-green-50 flex items-center justify-center">
+          <svg
+            className="w-10 h-10 text-green-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <p className="text-xl font-display font-semibold text-navy-900 mb-2">
           {t("successMessage")}
         </p>
       </div>
@@ -67,62 +69,62 @@ export function ApplicationForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-xl border shadow-sm">
+    <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 md:p-10 space-y-6">
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {t("fullName")} *
+          <label className="block text-sm font-medium text-navy-700 mb-2">
+            {t("fullName")} <span className="text-gold-500">*</span>
           </label>
           <input
             name="fullName"
             required
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="input-premium"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {t("email")} *
+          <label className="block text-sm font-medium text-navy-700 mb-2">
+            {t("email")} <span className="text-gold-500">*</span>
           </label>
           <input
             name="email"
             type="email"
             required
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="input-premium"
           />
         </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {t("phone")} *
+          <label className="block text-sm font-medium text-navy-700 mb-2">
+            {t("phone")} <span className="text-gold-500">*</span>
           </label>
           <input
             name="phone"
             required
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="input-premium"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {t("companyName")} *
+          <label className="block text-sm font-medium text-navy-700 mb-2">
+            {t("companyName")} <span className="text-gold-500">*</span>
           </label>
           <input
             name="companyName"
             required
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="input-premium"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          {t("companyType")} *
+        <label className="block text-sm font-medium text-navy-700 mb-2">
+          {t("companyType")} <span className="text-gold-500">*</span>
         </label>
         <select
           name="companyType"
           required
-          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="input-premium"
         >
           <option value="">{t("companyType")}</option>
           <option value="limited">{t("companyTypes.limited")}</option>
@@ -133,22 +135,34 @@ export function ApplicationForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-sm font-medium text-navy-700 mb-2">
           {t("description")}
         </label>
         <textarea
           name="description"
           rows={4}
-          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="input-premium resize-none"
         />
       </div>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-blue-700 text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition disabled:opacity-50"
+        className="btn-primary w-full !py-4 !text-sm disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {loading ? "..." : t("submit")}
+        {loading ? (
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 border-2 border-navy-900/30 border-t-navy-900 rounded-full animate-spin" />
+            <span>...</span>
+          </div>
+        ) : (
+          <>
+            {t("submit")}
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </>
+        )}
       </button>
     </form>
   );
