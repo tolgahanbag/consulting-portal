@@ -187,6 +187,87 @@
       "stepTitle": "Sammu Pealkiri",
       "stepDescription": "Sammu Kirjeldus",
       "order": "Järjekord"
+    },
+    "sidebar": {
+      "dashboard": "Töölaud",
+      "applications": "Taotlused",
+      "documents": "Dokumendid"
+    },
+    "tabs": {
+      "overview": "Ülevaade",
+      "quotes": "Pakkumised",
+      "workflow": "Töövoog",
+      "documents": "Dokumendid",
+      "notes": "Märkused",
+      "company": "Ettevõte"
+    },
+    "toast": {
+      "statusUpdated": "Staatus uuendatud",
+      "quoteSent": "Pakkumine saadetud",
+      "workflowAdded": "Töövoo samm lisatud",
+      "workflowUpdated": "Samm uuendatud",
+      "noteAdded": "Märkus lisatud",
+      "companyCreated": "Ettevõtte kirje loodud",
+      "documentUploaded": "Dokument üles laaditud",
+      "companyDocUploaded": "Ettevõtte dokument üles laaditud",
+      "messageSent": "Sõnum saadetud",
+      "error": "Ilmnes viga"
+    },
+    "notes": {
+      "title": "Märkused",
+      "placeholder": "Kirjutage märkus...",
+      "empty": "Märkusi pole veel"
+    },
+    "overview": {
+      "title": "Ülevaade",
+      "applicationInfo": "Taotluse Teave",
+      "companyName": "Ettevõtte Nimi",
+      "companyType": "Ettevõtte Tüüp",
+      "contactPerson": "Kontaktisik",
+      "submittedOn": "Esitatud",
+      "statusFlow": "Staatus"
+    },
+    "company": {
+      "companyName": "Ettevõtte Nimi",
+      "uploadDocument": "Laadi Dokument Üles",
+      "selectCategory": "Vali Kategooria",
+      "empty": "Ettevõtte kirjet pole veel"
+    },
+    "fileUpload": {
+      "dragDrop": "Lohistage või klõpsake üleslaadimiseks",
+      "selectedFile": "Valitud fail",
+      "maxSize": "Maksimaalne failisuurus: {size}MB"
+    },
+    "confirm": {
+      "deleteDocument": "Kustuta Dokument",
+      "deleteDocumentMessage": "Kas olete kindel, et soovite selle dokumendi kustutada? Seda toimingut ei saa tagasi võtta.",
+      "title": "Kinnita Toiming"
+    },
+    "table": {
+      "company": "Ettevõte",
+      "sortBy": "Sorteeri",
+      "perPage": "Lehel",
+      "page": "Leht",
+      "of": "/",
+      "showing": "Näidatakse",
+      "entries": "kirjet",
+      "noResults": "Tulemusi ei leitud",
+      "previous": "Eelmine",
+      "next": "Järgmine"
+    },
+    "workflow": {
+      "reply": "Vasta",
+      "messagePlaceholder": "Kirjutage sõnum...",
+      "empty": "Töövoo samme pole veel",
+      "statusPending": "Ootel",
+      "statusInProgress": "Töötlemisel",
+      "statusCompleted": "Lõpetatud"
+    },
+    "companyForm": {
+      "title": "Ettevõtte Registreerimine",
+      "companyName": "Ettevõtte Nimi",
+      "registrationNumber": "Registreerimisnumber",
+      "registrationDate": "Registreerimiskuupäev"
     }
   },
   "notifications": {

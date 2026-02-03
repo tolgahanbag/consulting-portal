@@ -187,6 +187,87 @@
       "stepTitle": "Step Title",
       "stepDescription": "Step Description",
       "order": "Order"
+    },
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "applications": "Applications",
+      "documents": "Documents"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "quotes": "Quotes",
+      "workflow": "Workflow",
+      "documents": "Documents",
+      "notes": "Notes",
+      "company": "Company"
+    },
+    "toast": {
+      "statusUpdated": "Status updated",
+      "quoteSent": "Quote sent",
+      "workflowAdded": "Workflow step added",
+      "workflowUpdated": "Step updated",
+      "noteAdded": "Note added",
+      "companyCreated": "Company record created",
+      "documentUploaded": "Document uploaded",
+      "companyDocUploaded": "Company document uploaded",
+      "messageSent": "Message sent",
+      "error": "An error occurred"
+    },
+    "notes": {
+      "title": "Notes",
+      "placeholder": "Write a note...",
+      "empty": "No notes yet"
+    },
+    "overview": {
+      "title": "Overview",
+      "applicationInfo": "Application Information",
+      "companyName": "Company Name",
+      "companyType": "Company Type",
+      "contactPerson": "Contact Person",
+      "submittedOn": "Submitted On",
+      "statusFlow": "Status Flow"
+    },
+    "company": {
+      "companyName": "Company Name",
+      "uploadDocument": "Upload Document",
+      "selectCategory": "Select Category",
+      "empty": "No company record yet"
+    },
+    "fileUpload": {
+      "dragDrop": "Drag & drop or click to upload",
+      "selectedFile": "Selected file",
+      "maxSize": "Max file size: {size}MB"
+    },
+    "confirm": {
+      "deleteDocument": "Delete Document",
+      "deleteDocumentMessage": "Are you sure you want to delete this document? This action cannot be undone.",
+      "title": "Confirm Action"
+    },
+    "table": {
+      "company": "Company",
+      "sortBy": "Sort by",
+      "perPage": "Per page",
+      "page": "Page",
+      "of": "of",
+      "showing": "Showing",
+      "entries": "entries",
+      "noResults": "No results found",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "workflow": {
+      "reply": "Reply",
+      "messagePlaceholder": "Type a message...",
+      "empty": "No workflow steps yet",
+      "statusPending": "Pending",
+      "statusInProgress": "In Progress",
+      "statusCompleted": "Completed"
+    },
+    "companyForm": {
+      "title": "Company Registration",
+      "companyName": "Company Name",
+      "registrationNumber": "Registration Number",
+      "registrationDate": "Registration Date"
     }
   },
   "notifications": {

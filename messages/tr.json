@@ -187,6 +187,87 @@
       "stepTitle": "Adım Başlığı",
       "stepDescription": "Adım Açıklaması",
       "order": "Sıra"
+    },
+    "sidebar": {
+      "dashboard": "Gösterge Paneli",
+      "applications": "Başvurular",
+      "documents": "Evraklar"
+    },
+    "tabs": {
+      "overview": "Genel Bakış",
+      "quotes": "Teklifler",
+      "workflow": "İş Akışı",
+      "documents": "Evraklar",
+      "notes": "Notlar",
+      "company": "Şirket"
+    },
+    "toast": {
+      "statusUpdated": "Durum güncellendi",
+      "quoteSent": "Teklif gönderildi",
+      "workflowAdded": "İş akışı adımı eklendi",
+      "workflowUpdated": "Adım güncellendi",
+      "noteAdded": "Not eklendi",
+      "companyCreated": "Şirket kaydı oluşturuldu",
+      "documentUploaded": "Evrak yüklendi",
+      "companyDocUploaded": "Şirket evrakı yüklendi",
+      "messageSent": "Mesaj gönderildi",
+      "error": "Bir hata oluştu"
+    },
+    "notes": {
+      "title": "Notlar",
+      "placeholder": "Bir not yazın...",
+      "empty": "Henüz not yok"
+    },
+    "overview": {
+      "title": "Genel Bakış",
+      "applicationInfo": "Başvuru Bilgileri",
+      "companyName": "Şirket Adı",
+      "companyType": "Şirket Türü",
+      "contactPerson": "İletişim Kişisi",
+      "submittedOn": "Başvuru Tarihi",
+      "statusFlow": "Durum Akışı"
+    },
+    "company": {
+      "companyName": "Şirket Adı",
+      "uploadDocument": "Evrak Yükle",
+      "selectCategory": "Kategori Seçin",
+      "empty": "Henüz şirket kaydı yok"
+    },
+    "fileUpload": {
+      "dragDrop": "Sürükle-bırak veya tıklayarak yükleyin",
+      "selectedFile": "Seçilen dosya",
+      "maxSize": "Maksimum dosya boyutu: {size}MB"
+    },
+    "confirm": {
+      "deleteDocument": "Evrak Sil",
+      "deleteDocumentMessage": "Bu evrakı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+      "title": "İşlemi Onayla"
+    },
+    "table": {
+      "company": "Şirket",
+      "sortBy": "Sırala",
+      "perPage": "Sayfa başına",
+      "page": "Sayfa",
+      "of": "/",
+      "showing": "Gösterilen",
+      "entries": "kayıt",
+      "noResults": "Sonuç bulunamadı",
+      "previous": "Önceki",
+      "next": "Sonraki"
+    },
+    "workflow": {
+      "reply": "Yanıtla",
+      "messagePlaceholder": "Mesaj yazın...",
+      "empty": "Henüz iş akışı adımı yok",
+      "statusPending": "Beklemede",
+      "statusInProgress": "İşlemde",
+      "statusCompleted": "Tamamlandı"
+    },
+    "companyForm": {
+      "title": "Şirket Kaydı",
+      "companyName": "Şirket Adı",
+      "registrationNumber": "Sicil Numarası",
+      "registrationDate": "Kuruluş Tarihi"
     }
   },
   "notifications": {
