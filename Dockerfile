@@ -41,9 +41,6 @@ COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 COPY --from=builder /app/messages ./messages
 
-# Copy the initialized SQLite database from build stage
-COPY --from=builder /app/prisma/dev.db ./prisma/dev.db
-
 RUN mkdir -p /app/uploads && chown nextjs:nodejs /app/uploads
 RUN chown -R nextjs:nodejs /app/prisma
 
