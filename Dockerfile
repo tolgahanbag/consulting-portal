@@ -15,6 +15,9 @@ COPY . .
 # Generate Prisma client
 RUN npx prisma generate
 
+# Run migrations to create initial DB
+RUN npx prisma migrate deploy --schema ./prisma/schema.prisma
+
 # Build Next.js
 RUN npm run build
 
@@ -36,11 +39,13 @@ COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
 COPY --from=builder /app/messages ./messages
 
+# Copy the initialized SQLite database from build stage
+COPY --from=builder /app/prisma/dev.db ./prisma/dev.db
+
 RUN mkdir -p /app/uploads && chown nextjs:nodejs /app/uploads
-RUN mkdir -p /app/prisma && chown nextjs:nodejs /app/prisma
+RUN chown -R nextjs:nodejs /app/prisma
 
 USER nextjs
 
@@ -49,4 +54,4 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["sh", "-c", "./node_modules/.bin/prisma migrate deploy --schema ./prisma/schema.prisma && node server.js"]
+CMD ["node", "server.js"]
