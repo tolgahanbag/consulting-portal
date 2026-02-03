@@ -1,0 +1,217 @@
+{
+  "common": {
+    "appName": "EstonTurk Konsultatsioon",
+    "home": "Avaleht",
+    "services": "Teenused",
+    "howItWorks": "Kuidas See Toimib",
+    "apply": "Esita Taotlus",
+    "login": "Logi Sisse",
+    "register": "Registreeri",
+    "logout": "Logi Välja",
+    "dashboard": "Töölaud",
+    "admin": "Haldus",
+    "save": "Salvesta",
+    "cancel": "Tühista",
+    "delete": "Kustuta",
+    "edit": "Muuda",
+    "view": "Vaata",
+    "download": "Laadi Alla",
+    "upload": "Laadi Üles",
+    "submit": "Esita",
+    "back": "Tagasi",
+    "next": "Edasi",
+    "loading": "Laadimine...",
+    "noData": "Andmeid ei leitud",
+    "success": "Edukas",
+    "error": "Viga",
+    "confirm": "Kinnita",
+    "search": "Otsi",
+    "filter": "Filtreeri",
+    "all": "Kõik",
+    "status": "Staatus",
+    "date": "Kuupäev",
+    "actions": "Toimingud",
+    "description": "Kirjeldus",
+    "amount": "Summa",
+    "phone": "Telefon",
+    "email": "E-post",
+    "name": "Täisnimi",
+    "password": "Parool",
+    "passwordConfirm": "Kinnita Parool"
+  },
+  "hero": {
+    "title": "Ettevõtte Asutamine Türgis Pole Kunagi Olnud Nii Lihtne",
+    "subtitle": "Meie Eestis asuv konsultatsioonifirma haldab teie kogu ettevõtte asutamise protsessi Türgis EL-ist ja Eestist.",
+    "cta": "Esita Taotlus"
+  },
+  "services": {
+    "title": "Meie Teenused",
+    "subtitle": "Pakume kogu vajalikku tuge teie äri käivitamiseks Türgis",
+    "companyFormation": {
+      "title": "Ettevõtte Asutamine",
+      "desc": "Haldame kõiki juriidilisi protsesse piiratud vastutusega või aktsiaseltsi asutamiseks Türgis."
+    },
+    "taxConsulting": {
+      "title": "Maksunõustamine",
+      "desc": "Professionaalne nõustamine Türgi maksuseadusandluse ja maksuplaneerimise osas."
+    },
+    "legalConsulting": {
+      "title": "Õigusnõustamine",
+      "desc": "Tugi äriõiguse, lepingute koostamise ja õigusliku vastavuse küsimustes."
+    },
+    "accounting": {
+      "title": "Raamatupidamine",
+      "desc": "Igakuine raamatupidamine, finantsaruanded ja regulatiivne aruandlus."
+    },
+    "workPermit": {
+      "title": "Töö-/Elamisluba",
+      "desc": "Töö- ja elamisloa taotlusprotsessid välismaa investoritele."
+    }
+  },
+  "howItWorks": {
+    "title": "Kuidas See Toimib?",
+    "subtitle": "Asutage oma ettevõte 4 lihtsa sammuga",
+    "step1": {
+      "title": "Taotlus",
+      "desc": "Täitke meie veebivorm ja täpsustage oma vajadused."
+    },
+    "step2": {
+      "title": "Pakkumine",
+      "desc": "Vaadake üle ja kinnitage teie isikupärastatud hinnapakkumine."
+    },
+    "step3": {
+      "title": "Protsess",
+      "desc": "Jälgige töövooge ja laadige üles vajalikud dokumendid."
+    },
+    "step4": {
+      "title": "Valmis",
+      "desc": "Teie ettevõte on asutatud! Ametlikud dokumendid on teie paneelil."
+    }
+  },
+  "applicationForm": {
+    "title": "Taotlusvorm",
+    "subtitle": "Täitke oma andmed ja võtame teiega peagi ühendust",
+    "fullName": "Täisnimi",
+    "email": "E-posti Aadress",
+    "phone": "Telefoninumber",
+    "companyName": "Soovitud Ettevõtte Nimi",
+    "companyType": "Ettevõtte Tüüp",
+    "companyTypes": {
+      "limited": "Osaühing (OÜ)",
+      "anonim": "Aktsiaselts (AS)",
+      "sahis": "Füüsilisest Isikust Ettevõtja",
+      "sube": "Filiaal"
+    },
+    "description": "Lisateave / Märkused",
+    "submit": "Esita Taotlus",
+    "successMessage": "Teie taotlus on vastu võetud! Võtame teiega peagi ühendust.",
+    "errorMessage": "Taotluse esitamisel ilmnes viga. Palun proovige uuesti."
+  },
+  "footer": {
+    "company": "EstonTurk Konsultatsioon OÜ",
+    "address": "Tallinn, Eesti",
+    "rights": "Kõik õigused kaitstud.",
+    "contact": "Kontakt",
+    "followUs": "Jälgi Meid"
+  },
+  "auth": {
+    "loginTitle": "Logi Sisse",
+    "registerTitle": "Registreeri",
+    "emailPlaceholder": "näide@email.com",
+    "passwordPlaceholder": "Teie parool",
+    "namePlaceholder": "Täisnimi",
+    "phonePlaceholder": "+372 XXXX XXXX",
+    "noAccount": "Pole kontot?",
+    "hasAccount": "On juba konto?",
+    "loginButton": "Logi Sisse",
+    "registerButton": "Registreeri",
+    "invalidCredentials": "Vale e-post või parool",
+    "emailExists": "See e-posti aadress on juba registreeritud",
+    "registerSuccess": "Registreerimine õnnestus! Nüüd saate sisse logida."
+  },
+  "dashboard": {
+    "title": "Minu Töölaud",
+    "welcome": "Tere tulemast",
+    "myApplications": "Minu Taotlused",
+    "activeApplications": "Aktiivsed Taotlused",
+    "pendingQuotes": "Ootel Pakkumised",
+    "notifications": "Teated",
+    "workflowStatus": "Töövoo Staatus",
+    "companyDocuments": "Ettevõtte Dokumendid",
+    "noApplications": "Teil pole veel taotlusi.",
+    "newApplication": "Uus Taotlus"
+  },
+  "application": {
+    "status": {
+      "NEW": "Uus",
+      "IN_REVIEW": "Ülevaatamisel",
+      "QUOTED": "Pakkumine Saadetud",
+      "ACCEPTED": "Vastu Võetud",
+      "IN_PROGRESS": "Töötlemisel",
+      "COMPLETED": "Lõpetatud"
+    },
+    "details": "Taotluse Üksikasjad",
+    "timeline": "Töövoog",
+    "documents": "Dokumendid",
+    "messages": "Sõnumid",
+    "quote": "Hinnapakkumine",
+    "acceptQuote": "Võta Pakkumine Vastu",
+    "rejectQuote": "Keeldu Pakkumisest",
+    "uploadDocument": "Laadi Dokument Üles",
+    "sendMessage": "Saada Sõnum",
+    "askQuestion": "Esita Küsimus"
+  },
+  "admin": {
+    "title": "Halduspaneel",
+    "applications": "Taotlused",
+    "totalApplications": "Taotlusi Kokku",
+    "newApplications": "Uued Taotlused",
+    "inProgress": "Töötlemisel",
+    "completed": "Lõpetatud",
+    "sendQuote": "Saada Pakkumine",
+    "createWorkflow": "Loo Töövoog",
+    "addStep": "Lisa Samm",
+    "addNote": "Lisa Märkus",
+    "companySetup": "Ettevõtte Registreerimine",
+    "quoteForm": {
+      "title": "Saada Hinnapakkumine",
+      "amount": "Summa",
+      "currency": "Valuuta",
+      "description": "Kirjeldus",
+      "validUntil": "Kehtiv Kuni",
+      "send": "Saada Pakkumine"
+    },
+    "workflowForm": {
+      "title": "Töövoo Samm",
+      "stepTitle": "Sammu Pealkiri",
+      "stepDescription": "Sammu Kirjeldus",
+      "order": "Järjekord"
+    }
+  },
+  "notifications": {
+    "title": "Teated",
+    "markAllRead": "Märgi Kõik Loetuks",
+    "noNotifications": "Teateid pole",
+    "newApplication": "Uus taotlus saadud",
+    "quoteReceived": "Hinnapakkumine saadetud",
+    "quoteAccepted": "Pakkumine vastu võetud",
+    "quoteRejected": "Pakkumine tagasi lükatud",
+    "workflowUpdated": "Töövoog uuendatud",
+    "documentUploaded": "Uus dokument üles laaditud"
+  },
+  "company": {
+    "title": "Ettevõtte Teave",
+    "documents": "Ametlikud Dokumendid",
+    "registrationNumber": "Registreerimisnumber",
+    "registrationDate": "Registreerimiskuupäev",
+    "status": "Staatus",
+    "active": "Aktiivne",
+    "inactive": "Mitteaktiivne",
+    "categories": {
+      "REGISTRATION": "Registreerimisdokumendid",
+      "TAX": "Maksudokumendid",
+      "LICENSE": "Litsentsid",
+      "OTHER": "Muu"
+    }
+  }
+}

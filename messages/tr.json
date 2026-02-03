@@ -1,0 +1,217 @@
+{
+  "common": {
+    "appName": "EstonTurk Danışmanlık",
+    "home": "Ana Sayfa",
+    "services": "Hizmetler",
+    "howItWorks": "Nasıl Çalışır",
+    "apply": "Başvuru Yap",
+    "login": "Giriş Yap",
+    "register": "Kayıt Ol",
+    "logout": "Çıkış Yap",
+    "dashboard": "Panel",
+    "admin": "Yönetim",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "view": "Görüntüle",
+    "download": "İndir",
+    "upload": "Yükle",
+    "submit": "Gönder",
+    "back": "Geri",
+    "next": "İleri",
+    "loading": "Yükleniyor...",
+    "noData": "Veri bulunamadı",
+    "success": "Başarılı",
+    "error": "Hata",
+    "confirm": "Onayla",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "all": "Tümü",
+    "status": "Durum",
+    "date": "Tarih",
+    "actions": "İşlemler",
+    "description": "Açıklama",
+    "amount": "Tutar",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "name": "Ad Soyad",
+    "password": "Şifre",
+    "passwordConfirm": "Şifre Tekrar"
+  },
+  "hero": {
+    "title": "Türkiye'de Şirket Kurmak Hiç Bu Kadar Kolay Olmamıştı",
+    "subtitle": "Estonya merkezli danışmanlık firmamız ile AB ve Estonya'dan Türkiye'de şirket kurma sürecinizi uçtan uca yönetiyoruz.",
+    "cta": "Hemen Başvurun"
+  },
+  "services": {
+    "title": "Hizmetlerimiz",
+    "subtitle": "Türkiye'de iş kurma sürecinizde ihtiyacınız olan tüm destekleri sunuyoruz",
+    "companyFormation": {
+      "title": "Şirket Kurulumu",
+      "desc": "Türkiye'de Limited veya Anonim şirket kurulumu için tüm yasal süreçleri yönetiyoruz."
+    },
+    "taxConsulting": {
+      "title": "Vergi Danışmanlığı",
+      "desc": "Türk vergi mevzuatı hakkında profesyonel danışmanlık ve vergi planlaması."
+    },
+    "legalConsulting": {
+      "title": "Hukuki Danışmanlık",
+      "desc": "Ticaret hukuku, sözleşme hazırlama ve yasal uyumluluk konularında destek."
+    },
+    "accounting": {
+      "title": "Muhasebe Hizmetleri",
+      "desc": "Aylık muhasebe, mali tablolar ve yasal raporlama hizmetleri."
+    },
+    "workPermit": {
+      "title": "Çalışma/Oturma İzni",
+      "desc": "Yabancı yatırımcılar için çalışma ve oturma izni başvuru süreçleri."
+    }
+  },
+  "howItWorks": {
+    "title": "Nasıl Çalışır?",
+    "subtitle": "4 basit adımda şirketinizi kurun",
+    "step1": {
+      "title": "Başvuru",
+      "desc": "Online formumuzu doldurun, ihtiyaçlarınızı belirtin."
+    },
+    "step2": {
+      "title": "Teklif",
+      "desc": "Size özel fiyat teklifimizi inceleyin ve onaylayın."
+    },
+    "step3": {
+      "title": "Süreç",
+      "desc": "İş akışını takip edin, gerekli evrakları yükleyin."
+    },
+    "step4": {
+      "title": "Tamamlandı",
+      "desc": "Şirketiniz kuruldu! Resmi evraklarınız panelinizde."
+    }
+  },
+  "applicationForm": {
+    "title": "Başvuru Formu",
+    "subtitle": "Bilgilerinizi doldurun, en kısa sürede size dönüş yapalım",
+    "fullName": "Ad Soyad",
+    "email": "E-posta Adresi",
+    "phone": "Telefon Numarası",
+    "companyName": "Kurmak İstediğiniz Şirket Adı",
+    "companyType": "Şirket Türü",
+    "companyTypes": {
+      "limited": "Limited Şirketi (Ltd.)",
+      "anonim": "Anonim Şirketi (A.Ş.)",
+      "sahis": "Şahıs Şirketi",
+      "sube": "Şube Açılışı"
+    },
+    "description": "Ek Bilgiler / Notlar",
+    "submit": "Başvuruyu Gönder",
+    "successMessage": "Başvurunuz başarıyla alındı! En kısa sürede size dönüş yapılacaktır.",
+    "errorMessage": "Başvuru gönderilirken bir hata oluştu. Lütfen tekrar deneyin."
+  },
+  "footer": {
+    "company": "EstonTurk Danışmanlık OÜ",
+    "address": "Tallinn, Estonya",
+    "rights": "Tüm hakları saklıdır.",
+    "contact": "İletişim",
+    "followUs": "Bizi Takip Edin"
+  },
+  "auth": {
+    "loginTitle": "Giriş Yap",
+    "registerTitle": "Kayıt Ol",
+    "emailPlaceholder": "ornek@email.com",
+    "passwordPlaceholder": "Şifreniz",
+    "namePlaceholder": "Ad Soyad",
+    "phonePlaceholder": "+90 5XX XXX XX XX",
+    "noAccount": "Hesabınız yok mu?",
+    "hasAccount": "Zaten hesabınız var mı?",
+    "loginButton": "Giriş Yap",
+    "registerButton": "Kayıt Ol",
+    "invalidCredentials": "Geçersiz e-posta veya şifre",
+    "emailExists": "Bu e-posta adresi zaten kayıtlı",
+    "registerSuccess": "Kayıt başarılı! Giriş yapabilirsiniz."
+  },
+  "dashboard": {
+    "title": "Panelim",
+    "welcome": "Hoş geldiniz",
+    "myApplications": "Başvurularım",
+    "activeApplications": "Aktif Başvurular",
+    "pendingQuotes": "Bekleyen Teklifler",
+    "notifications": "Bildirimler",
+    "workflowStatus": "İş Akışı Durumu",
+    "companyDocuments": "Şirket Evrakları",
+    "noApplications": "Henüz başvurunuz bulunmamaktadır.",
+    "newApplication": "Yeni Başvuru"
+  },
+  "application": {
+    "status": {
+      "NEW": "Yeni",
+      "IN_REVIEW": "İnceleniyor",
+      "QUOTED": "Teklif Gönderildi",
+      "ACCEPTED": "Kabul Edildi",
+      "IN_PROGRESS": "İşlemde",
+      "COMPLETED": "Tamamlandı"
+    },
+    "details": "Başvuru Detayı",
+    "timeline": "İş Akışı",
+    "documents": "Evraklar",
+    "messages": "Mesajlar",
+    "quote": "Fiyat Teklifi",
+    "acceptQuote": "Teklifi Kabul Et",
+    "rejectQuote": "Teklifi Reddet",
+    "uploadDocument": "Evrak Yükle",
+    "sendMessage": "Mesaj Gönder",
+    "askQuestion": "Soru Sor"
+  },
+  "admin": {
+    "title": "Yönetim Paneli",
+    "applications": "Başvurular",
+    "totalApplications": "Toplam Başvuru",
+    "newApplications": "Yeni Başvurular",
+    "inProgress": "İşlemde",
+    "completed": "Tamamlanan",
+    "sendQuote": "Teklif Gönder",
+    "createWorkflow": "İş Akışı Oluştur",
+    "addStep": "Adım Ekle",
+    "addNote": "Not Ekle",
+    "companySetup": "Şirket Kayıt",
+    "quoteForm": {
+      "title": "Fiyat Teklifi Gönder",
+      "amount": "Tutar",
+      "currency": "Para Birimi",
+      "description": "Açıklama",
+      "validUntil": "Geçerlilik Tarihi",
+      "send": "Teklifi Gönder"
+    },
+    "workflowForm": {
+      "title": "İş Akışı Adımı",
+      "stepTitle": "Adım Başlığı",
+      "stepDescription": "Adım Açıklaması",
+      "order": "Sıra"
+    }
+  },
+  "notifications": {
+    "title": "Bildirimler",
+    "markAllRead": "Tümünü Okundu İşaretle",
+    "noNotifications": "Bildirim bulunmuyor",
+    "newApplication": "Yeni başvuru alındı",
+    "quoteReceived": "Fiyat teklifi gönderildi",
+    "quoteAccepted": "Teklif kabul edildi",
+    "quoteRejected": "Teklif reddedildi",
+    "workflowUpdated": "İş akışı güncellendi",
+    "documentUploaded": "Yeni evrak yüklendi"
+  },
+  "company": {
+    "title": "Şirket Bilgileri",
+    "documents": "Resmi Evraklar",
+    "registrationNumber": "Sicil Numarası",
+    "registrationDate": "Kuruluş Tarihi",
+    "status": "Durum",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "categories": {
+      "REGISTRATION": "Kuruluş Belgeleri",
+      "TAX": "Vergi Belgeleri",
+      "LICENSE": "Lisanslar",
+      "OTHER": "Diğer"
+    }
+  }
+}
