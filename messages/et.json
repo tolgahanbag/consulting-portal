@@ -37,7 +37,8 @@
     "email": "E-post",
     "name": "Täisnimi",
     "password": "Parool",
-    "passwordConfirm": "Kinnita Parool"
+    "passwordConfirm": "Kinnita Parool",
+    "documents": "Dokumendid"
   },
   "hero": {
     "title": "Ettevõtte Asutamine Türgis Pole Kunagi Olnud Nii Lihtne",
@@ -198,6 +199,33 @@
     "quoteRejected": "Pakkumine tagasi lükatud",
     "workflowUpdated": "Töövoog uuendatud",
     "documentUploaded": "Uus dokument üles laaditud"
+  },
+  "adminDocuments": {
+    "title": "Dokumendihaldus",
+    "totalDocuments": "Dokumente Kokku",
+    "applicationDocs": "Taotluse Dokumendid",
+    "companyDocs": "Ettevõtte Dokumendid",
+    "otherDocs": "Muu",
+    "searchPlaceholder": "Otsi failinime järgi...",
+    "allCategories": "Kõik Kategooriad",
+    "allApplications": "Kõik Taotlused",
+    "allFileTypes": "Kõik Failitüübid",
+    "dateFrom": "Alates",
+    "dateTo": "Kuni",
+    "fileName": "Failinimi",
+    "application": "Taotlus",
+    "category": "Kategooria",
+    "uploadedBy": "Üleslaadija",
+    "fileType": "Failitüüp",
+    "noApplication": "Taotlus Puudub",
+    "deleteConfirm": "Kas olete kindel, et soovite selle dokumendi kustutada? Seda toimingut ei saa tagasi võtta.",
+    "deleteSuccess": "Dokument kustutatud.",
+    "deleteError": "Dokumendi kustutamine ebaõnnestus.",
+    "categoryLabels": {
+      "APPLICATION_DOC": "Taotlus",
+      "COMPANY_DOC": "Ettevõte",
+      "OTHER": "Muu"
+    }
   },
   "company": {
     "title": "Ettevõtte Teave",

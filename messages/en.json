@@ -37,7 +37,8 @@
     "email": "Email",
     "name": "Full Name",
     "password": "Password",
-    "passwordConfirm": "Confirm Password"
+    "passwordConfirm": "Confirm Password",
+    "documents": "Documents"
   },
   "hero": {
     "title": "Setting Up a Company in Turkey Has Never Been Easier",
@@ -198,6 +199,33 @@
     "quoteRejected": "Quote rejected",
     "workflowUpdated": "Workflow updated",
     "documentUploaded": "New document uploaded"
+  },
+  "adminDocuments": {
+    "title": "Document Management",
+    "totalDocuments": "Total Documents",
+    "applicationDocs": "Application Documents",
+    "companyDocs": "Company Documents",
+    "otherDocs": "Other",
+    "searchPlaceholder": "Search by file name...",
+    "allCategories": "All Categories",
+    "allApplications": "All Applications",
+    "allFileTypes": "All File Types",
+    "dateFrom": "From",
+    "dateTo": "To",
+    "fileName": "File Name",
+    "application": "Application",
+    "category": "Category",
+    "uploadedBy": "Uploaded By",
+    "fileType": "File Type",
+    "noApplication": "No Application",
+    "deleteConfirm": "Are you sure you want to delete this document? This action cannot be undone.",
+    "deleteSuccess": "Document deleted successfully.",
+    "deleteError": "Failed to delete document.",
+    "categoryLabels": {
+      "APPLICATION_DOC": "Application",
+      "COMPANY_DOC": "Company",
+      "OTHER": "Other"
+    }
   },
   "company": {
     "title": "Company Information",

@@ -37,7 +37,8 @@
     "email": "E-posta",
     "name": "Ad Soyad",
     "password": "Şifre",
-    "passwordConfirm": "Şifre Tekrar"
+    "passwordConfirm": "Şifre Tekrar",
+    "documents": "Evraklar"
   },
   "hero": {
     "title": "Türkiye'de Şirket Kurmak Hiç Bu Kadar Kolay Olmamıştı",
@@ -198,6 +199,33 @@
     "quoteRejected": "Teklif reddedildi",
     "workflowUpdated": "İş akışı güncellendi",
     "documentUploaded": "Yeni evrak yüklendi"
+  },
+  "adminDocuments": {
+    "title": "Evrak Yönetimi",
+    "totalDocuments": "Toplam Evrak",
+    "applicationDocs": "Başvuru Evrakları",
+    "companyDocs": "Şirket Evrakları",
+    "otherDocs": "Diğer",
+    "searchPlaceholder": "Dosya adına göre ara...",
+    "allCategories": "Tüm Kategoriler",
+    "allApplications": "Tüm Başvurular",
+    "allFileTypes": "Tüm Dosya Türleri",
+    "dateFrom": "Başlangıç",
+    "dateTo": "Bitiş",
+    "fileName": "Dosya Adı",
+    "application": "Başvuru",
+    "category": "Kategori",
+    "uploadedBy": "Yükleyen",
+    "fileType": "Dosya Türü",
+    "noApplication": "Başvuru Yok",
+    "deleteConfirm": "Bu evrakı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+    "deleteSuccess": "Evrak başarıyla silindi.",
+    "deleteError": "Evrak silinirken hata oluştu.",
+    "categoryLabels": {
+      "APPLICATION_DOC": "Başvuru",
+      "COMPANY_DOC": "Şirket",
+      "OTHER": "Diğer"
+    }
   },
   "company": {
     "title": "Şirket Bilgileri",

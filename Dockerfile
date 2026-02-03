@@ -18,6 +18,9 @@ RUN npx prisma generate
 # Run migrations to create initial DB
 RUN npx prisma migrate deploy --schema ./prisma/schema.prisma
 
+# Seed the database with admin user
+RUN npx prisma db seed
+
 # Build Next.js
 RUN npm run build
 
