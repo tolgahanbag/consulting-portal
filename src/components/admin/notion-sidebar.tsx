@@ -126,7 +126,7 @@ export function NotionSidebar({ onSearchClick }: NotionSidebarProps) {
       return pathWithoutLocale === "/admin";
     }
     if (item.key === "applications") {
-      return pathWithoutLocale === "/admin" || pathWithoutLocale.startsWith("/admin/applications");
+      return pathWithoutLocale.startsWith("/admin/applications");
     }
     if (item.key === "kanban") {
       return pathWithoutLocale === "/admin" && typeof window !== "undefined" && window.location.search.includes("view=board");

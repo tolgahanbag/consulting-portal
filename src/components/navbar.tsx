@@ -30,6 +30,7 @@ export function Navbar() {
   const user = session.data?.user as
     | { name?: string; email?: string; role?: string }
     | undefined;
+  const isInAdmin = pathname.startsWith("/admin");
 
   function switchLocale(newLocale: string) {
     router.replace(pathname, { locale: newLocale as "tr" | "en" | "et" });
@@ -122,40 +123,32 @@ export function Navbar() {
             {session.status === "authenticated" && user ? (
               <div className="flex items-center gap-2">
                 <NotificationDropdown />
-                {user.role === "ADMIN" && (
+                {!isInAdmin && (
                   <>
+                    {user.role === "ADMIN" && (
+                      <Link
+                        href="/admin"
+                        className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-300 ${
+                          scrolled
+                            ? "text-navy-600 hover:bg-navy-50 hover:text-navy-900"
+                            : "text-white/80 hover:bg-white/10 hover:text-white"
+                        }`}
+                      >
+                        {t("admin")}
+                      </Link>
+                    )}
                     <Link
-                      href="/admin"
+                      href="/dashboard"
                       className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-300 ${
                         scrolled
                           ? "text-navy-600 hover:bg-navy-50 hover:text-navy-900"
                           : "text-white/80 hover:bg-white/10 hover:text-white"
                       }`}
                     >
-                      {t("admin")}
-                    </Link>
-                    <Link
-                      href="/admin/documents"
-                      className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-300 ${
-                        scrolled
-                          ? "text-navy-600 hover:bg-navy-50 hover:text-navy-900"
-                          : "text-white/80 hover:bg-white/10 hover:text-white"
-                      }`}
-                    >
-                      {t("documents")}
+                      {t("dashboard")}
                     </Link>
                   </>
                 )}
-                <Link
-                  href="/dashboard"
-                  className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-300 ${
-                    scrolled
-                      ? "text-navy-600 hover:bg-navy-50 hover:text-navy-900"
-                      : "text-white/80 hover:bg-white/10 hover:text-white"
-                  }`}
-                >
-                  {t("dashboard")}
-                </Link>
                 <div className={`hidden sm:flex items-center gap-2 ml-1 pl-3 border-l ${
                   scrolled ? "border-navy-200" : "border-white/20"
                 }`}>
