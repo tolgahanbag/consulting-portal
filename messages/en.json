@@ -195,6 +195,9 @@
       "documents": "Documents",
       "users": "Users",
       "reports": "Reports",
+      "notifications": "Notifications",
+      "translations": "Translations",
+      "settings": "Settings",
       "auditLogs": "Audit Logs",
       "search": "Search"
     },
@@ -205,6 +208,10 @@
       "noResults": "No results found",
       "recentlyVisited": "Recently Visited"
     },
+    "searchPlaceholder": "Search by name, company, or email...",
+    "companyType": "Company Type",
+    "dateFrom": "Date From",
+    "dateTo": "Date To",
     "viewToggle": {
       "table": "Table",
       "board": "Board"
@@ -321,6 +328,64 @@
     "quoteRejected": "Quote rejected",
     "workflowUpdated": "Workflow updated",
     "documentUploaded": "New document uploaded"
+  },
+  "i18nAdmin": {
+    "title": "Translation Management",
+    "subtitle": "Edit application translations",
+    "searchPlaceholder": "Search by key or value...",
+    "keysFound": "keys found",
+    "key": "Key",
+    "value": "Value",
+    "saveSuccess": "Translation saved",
+    "saveError": "Failed to save translation"
+  },
+  "adminNotifications": {
+    "title": "Notification Management",
+    "subtitle": "Manage all system notifications and send broadcasts",
+    "total": "Total Notifications",
+    "unread": "Unread",
+    "broadcast": "Broadcast",
+    "send": "Send",
+    "sentTo": "users notified",
+    "sendError": "Failed to send notification",
+    "recipient": "Recipient",
+    "type": "Type",
+    "titleCol": "Title",
+    "message": "Message",
+    "read": "Read",
+    "target": "Target",
+    "allUsers": "All Users",
+    "types": {
+      "INFO": "Info",
+      "QUOTE": "Quote",
+      "WORKFLOW": "Workflow",
+      "DOCUMENT": "Document"
+    }
+  },
+  "settings": {
+    "title": "System Settings",
+    "subtitle": "Configure email templates, workflow steps, and categories",
+    "emailTemplates": "Email Templates",
+    "workflowTemplates": "Workflow Templates",
+    "categories": "Categories",
+    "emailVariablesHint": "Available variables: {fullName}, {companyName}, {amount}, {currency}",
+    "subject": "Subject",
+    "body": "Body",
+    "templateNames": {
+      "newApplication": "New Application",
+      "quoteSent": "Quote Sent",
+      "companyCompleted": "Company Setup Completed"
+    },
+    "workflowHint": "Default workflow steps for new applications",
+    "stepTitle": "Step Title",
+    "stepDescription": "Step Description",
+    "addStep": "Add Step",
+    "docCategories": "Document Categories",
+    "companyDocCategories": "Company Document Categories",
+    "newCategory": "New category name",
+    "add": "Add",
+    "saveSuccess": "Settings saved",
+    "saveError": "Failed to save settings"
   },
   "reports": {
     "title": "Reports & Analytics",

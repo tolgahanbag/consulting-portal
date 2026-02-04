@@ -195,6 +195,9 @@
       "documents": "Dokumendid",
       "users": "Kasutajad",
       "reports": "Aruanded",
+      "notifications": "Teated",
+      "translations": "Tõlked",
+      "settings": "Seaded",
       "auditLogs": "Auditi Logid",
       "search": "Otsi"
     },
@@ -205,6 +208,10 @@
       "noResults": "Tulemusi ei leitud",
       "recentlyVisited": "Hiljuti Külastatud"
     },
+    "searchPlaceholder": "Otsi nime, ettevõtte või e-posti järgi...",
+    "companyType": "Ettevõtte Tüüp",
+    "dateFrom": "Alguskuupäev",
+    "dateTo": "Lõppkuupäev",
     "viewToggle": {
       "table": "Tabel",
       "board": "Tahvel"
@@ -321,6 +328,64 @@
     "quoteRejected": "Pakkumine tagasi lükatud",
     "workflowUpdated": "Töövoog uuendatud",
     "documentUploaded": "Uus dokument üles laaditud"
+  },
+  "i18nAdmin": {
+    "title": "Tõlkehaldus",
+    "subtitle": "Muuda rakenduse tõlkeid",
+    "searchPlaceholder": "Otsi võtme või väärtuse järgi...",
+    "keysFound": "võtit leitud",
+    "key": "Võti",
+    "value": "Väärtus",
+    "saveSuccess": "Tõlge salvestatud",
+    "saveError": "Tõlke salvestamine ebaõnnestus"
+  },
+  "adminNotifications": {
+    "title": "Teadete Haldus",
+    "subtitle": "Halda kõiki süsteemiteateid ja saada ülekandeid",
+    "total": "Teateid Kokku",
+    "unread": "Lugemata",
+    "broadcast": "Massiteade",
+    "send": "Saada",
+    "sentTo": "kasutajat teavitatud",
+    "sendError": "Teate saatmine ebaõnnestus",
+    "recipient": "Saaja",
+    "type": "Tüüp",
+    "titleCol": "Pealkiri",
+    "message": "Sõnum",
+    "read": "Loetud",
+    "target": "Sihtgrupp",
+    "allUsers": "Kõik Kasutajad",
+    "types": {
+      "INFO": "Info",
+      "QUOTE": "Pakkumine",
+      "WORKFLOW": "Töövoog",
+      "DOCUMENT": "Dokument"
+    }
+  },
+  "settings": {
+    "title": "Süsteemi Seaded",
+    "subtitle": "E-posti mallid, töövoo sammud ja kategooriad",
+    "emailTemplates": "E-posti Mallid",
+    "workflowTemplates": "Töövoo Mallid",
+    "categories": "Kategooriad",
+    "emailVariablesHint": "Saadaolevad muutujad: {fullName}, {companyName}, {amount}, {currency}",
+    "subject": "Teema",
+    "body": "Sisu",
+    "templateNames": {
+      "newApplication": "Uus Taotlus",
+      "quoteSent": "Pakkumine Saadetud",
+      "companyCompleted": "Ettevõte Asutatud"
+    },
+    "workflowHint": "Uute taotluste vaikimisi töövoo sammud",
+    "stepTitle": "Sammu Pealkiri",
+    "stepDescription": "Sammu Kirjeldus",
+    "addStep": "Lisa Samm",
+    "docCategories": "Dokumendi Kategooriad",
+    "companyDocCategories": "Ettevõtte Dokumendi Kategooriad",
+    "newCategory": "Uue kategooria nimi",
+    "add": "Lisa",
+    "saveSuccess": "Seaded salvestatud",
+    "saveError": "Seadete salvestamine ebaõnnestus"
   },
   "reports": {
     "title": "Aruanded ja Analüütika",

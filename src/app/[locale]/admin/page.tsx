@@ -37,6 +37,12 @@ export default function AdminPage() {
   const [applications, setApplications] = useState<ApplicationListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [companyTypeFilter, setCompanyTypeFilter] = useState("");
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("createdAt");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [page, setPage] = useState(1);
@@ -46,6 +52,11 @@ export default function AdminPage() {
   );
 
   const { order, reorder, resetLayout } = useDashboardLayout();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedSearch(searchQuery), 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   // Dashboard widget DnD sensors (distance: 10 to avoid accidental drags)
   const widgetSensors = useSensors(
@@ -84,10 +95,37 @@ export default function AdminPage() {
   useEffect(() => {
     setPage(1);
     setSelectedIds([]);
-  }, [filterStatus, sortKey, sortDir]);
+  }, [filterStatus, sortKey, sortDir, debouncedSearch, companyTypeFilter, dateFrom, dateTo]);
 
   const sorted = useMemo(() => {
-    const arr = [...applications];
+    let arr = [...applications];
+
+    // Search filter
+    if (debouncedSearch) {
+      const q = debouncedSearch.toLowerCase();
+      arr = arr.filter(
+        (a) =>
+          a.fullName.toLowerCase().includes(q) ||
+          a.companyName.toLowerCase().includes(q) ||
+          a.email.toLowerCase().includes(q)
+      );
+    }
+
+    // Company type filter
+    if (companyTypeFilter) {
+      arr = arr.filter((a) => a.companyType === companyTypeFilter);
+    }
+
+    // Date range filter
+    if (dateFrom) {
+      const from = new Date(dateFrom).getTime();
+      arr = arr.filter((a) => new Date(a.createdAt).getTime() >= from);
+    }
+    if (dateTo) {
+      const to = new Date(dateTo).getTime() + 86400000; // end of day
+      arr = arr.filter((a) => new Date(a.createdAt).getTime() <= to);
+    }
+
     arr.sort((a, b) => {
       let av = a[sortKey] as string;
       let bv = b[sortKey] as string;
@@ -103,7 +141,7 @@ export default function AdminPage() {
       return 0;
     });
     return arr;
-  }, [applications, sortKey, sortDir]);
+  }, [applications, sortKey, sortDir, debouncedSearch, companyTypeFilter, dateFrom, dateTo]);
 
   const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
   const paginated = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
@@ -225,7 +263,62 @@ export default function AdminPage() {
     ),
     content: (
       <>
-        {/* Filter + View Toggle */}
+        {/* Search Bar */}
+        <div className="mb-4 flex items-center gap-3">
+          <div className="relative flex-1 max-w-md">
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-notion-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={t("admin.searchPlaceholder")}
+              className="notion-input pl-10"
+            />
+          </div>
+          <button
+            onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+            className={`px-3 py-2 rounded-md text-sm transition-colors border ${
+              showAdvancedFilters
+                ? "bg-notion-text text-white border-notion-text"
+                : "text-notion-text-secondary border-notion-border hover:bg-notion-bg-hover"
+            }`}
+          >
+            {t("common.filter")}
+            <svg className={`w-3 h-3 ml-1 inline-block transition-transform ${showAdvancedFilters ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Advanced Filters */}
+        {showAdvancedFilters && (
+          <div className="notion-card mb-4 animate-fade-up">
+            <div className="grid sm:grid-cols-3 gap-3">
+              <div>
+                <label className="block text-xs font-medium text-notion-text-secondary mb-1">{t("admin.companyType")}</label>
+                <select value={companyTypeFilter} onChange={(e) => setCompanyTypeFilter(e.target.value)} className="notion-input w-full">
+                  <option value="">{t("common.all")}</option>
+                  <option value="limited">{t("applicationForm.companyTypes.limited")}</option>
+                  <option value="anonim">{t("applicationForm.companyTypes.anonim")}</option>
+                  <option value="sahis">{t("applicationForm.companyTypes.sahis")}</option>
+                  <option value="sube">{t("applicationForm.companyTypes.sube")}</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-notion-text-secondary mb-1">{t("admin.dateFrom")}</label>
+                <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} className="notion-input w-full" />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-notion-text-secondary mb-1">{t("admin.dateTo")}</label>
+                <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} className="notion-input w-full" />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Status Filter + View Toggle */}
         <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
           <div className="flex gap-1.5 flex-wrap">
             {["all", "NEW", "IN_REVIEW", "QUOTED", "ACCEPTED", "IN_PROGRESS", "COMPLETED"].map(

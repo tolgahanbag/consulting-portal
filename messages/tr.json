@@ -195,6 +195,9 @@
       "documents": "Evraklar",
       "users": "Kullanıcılar",
       "reports": "Raporlar",
+      "notifications": "Bildirimler",
+      "translations": "Dil Yönetimi",
+      "settings": "Ayarlar",
       "auditLogs": "Denetim Kayıtları",
       "search": "Ara"
     },
@@ -205,6 +208,10 @@
       "noResults": "Sonuç bulunamadı",
       "recentlyVisited": "Son Ziyaret Edilenler"
     },
+    "searchPlaceholder": "Ad, şirket veya e-posta ile ara...",
+    "companyType": "Şirket Türü",
+    "dateFrom": "Başlangıç Tarihi",
+    "dateTo": "Bitiş Tarihi",
     "viewToggle": {
       "table": "Tablo",
       "board": "Pano"
@@ -321,6 +328,64 @@
     "quoteRejected": "Teklif reddedildi",
     "workflowUpdated": "İş akışı güncellendi",
     "documentUploaded": "Yeni evrak yüklendi"
+  },
+  "i18nAdmin": {
+    "title": "Dil Yönetimi",
+    "subtitle": "Uygulama çevirilerini düzenleyin",
+    "searchPlaceholder": "Anahtar veya değer ara...",
+    "keysFound": "anahtar bulundu",
+    "key": "Anahtar",
+    "value": "Değer",
+    "saveSuccess": "Çeviri kaydedildi",
+    "saveError": "Çeviri kaydedilirken hata oluştu"
+  },
+  "adminNotifications": {
+    "title": "Bildirim Yönetimi",
+    "subtitle": "Tüm sistem bildirimlerini yönetin ve toplu bildirim gönderin",
+    "total": "Toplam Bildirim",
+    "unread": "Okunmamış",
+    "broadcast": "Toplu Bildirim",
+    "send": "Gönder",
+    "sentTo": "kullanıcıya gönderildi",
+    "sendError": "Bildirim gönderilemedi",
+    "recipient": "Alıcı",
+    "type": "Tür",
+    "titleCol": "Başlık",
+    "message": "Mesaj",
+    "read": "Okundu",
+    "target": "Hedef",
+    "allUsers": "Tüm Kullanıcılar",
+    "types": {
+      "INFO": "Bilgi",
+      "QUOTE": "Teklif",
+      "WORKFLOW": "İş Akışı",
+      "DOCUMENT": "Evrak"
+    }
+  },
+  "settings": {
+    "title": "Sistem Ayarları",
+    "subtitle": "E-posta şablonları, iş akışı adımları ve kategorileri yapılandırın",
+    "emailTemplates": "E-posta Şablonları",
+    "workflowTemplates": "İş Akışı Şablonları",
+    "categories": "Kategoriler",
+    "emailVariablesHint": "Kullanılabilir değişkenler: {fullName}, {companyName}, {amount}, {currency}",
+    "subject": "Konu",
+    "body": "İçerik",
+    "templateNames": {
+      "newApplication": "Yeni Başvuru",
+      "quoteSent": "Teklif Gönderimi",
+      "companyCompleted": "Şirket Kurulumu Tamamlandı"
+    },
+    "workflowHint": "Yeni başvurularda varsayılan olarak kullanılacak iş akışı adımları",
+    "stepTitle": "Adım Başlığı",
+    "stepDescription": "Adım Açıklaması",
+    "addStep": "Adım Ekle",
+    "docCategories": "Evrak Kategorileri",
+    "companyDocCategories": "Şirket Evrak Kategorileri",
+    "newCategory": "Yeni kategori adı",
+    "add": "Ekle",
+    "saveSuccess": "Ayarlar kaydedildi",
+    "saveError": "Ayarlar kaydedilirken hata oluştu"
   },
   "reports": {
     "title": "Raporlar ve Analiz",
