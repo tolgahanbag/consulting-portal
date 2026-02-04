@@ -67,9 +67,14 @@ export async function PATCH(
     }
 
     const body = await req.json();
+    const data: Record<string, string> = {};
+    if (body.status) data.status = body.status;
+    if (body.companyName !== undefined) data.companyName = body.companyName;
+    if (body.description !== undefined) data.description = body.description;
+
     const application = await prisma.application.update({
       where: { id },
-      data: { status: body.status },
+      data,
     });
 
     return NextResponse.json({ application });

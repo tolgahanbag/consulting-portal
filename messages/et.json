@@ -191,7 +191,27 @@
     "sidebar": {
       "dashboard": "Töölaud",
       "applications": "Taotlused",
-      "documents": "Dokumendid"
+      "kanban": "Kanban Tahvel",
+      "documents": "Dokumendid",
+      "search": "Otsi"
+    },
+    "commandPalette": {
+      "placeholder": "Otsi taotlusi, lehti...",
+      "navigation": "Navigeerimine",
+      "applications": "Taotlused",
+      "noResults": "Tulemusi ei leitud",
+      "recentlyVisited": "Hiljuti Külastatud"
+    },
+    "viewToggle": {
+      "table": "Tabel",
+      "board": "Tahvel"
+    },
+    "bulkActions": {
+      "selected": "{count} valitud",
+      "changeStatus": "Muuda Staatust",
+      "delete": "Kustuta",
+      "confirmDelete": "Kustuta valitud taotlused?",
+      "confirmDeleteMessage": "Kas olete kindel, et soovite kustutada {count} taotlus(t)? Seda ei saa tagasi võtta."
     },
     "tabs": {
       "overview": "Ülevaade",
@@ -268,6 +288,24 @@
       "companyName": "Ettevõtte Nimi",
       "registrationNumber": "Registreerimisnumber",
       "registrationDate": "Registreerimiskuupäev"
+    },
+    "kanban": {
+      "addCard": "+ Uus",
+      "quickAdd": {
+        "companyName": "Ettevõtte Nimi",
+        "fullName": "Täisnimi",
+        "email": "E-post",
+        "phone": "Telefon"
+      },
+      "peek": {
+        "contact": "Kontakt",
+        "documents": "Dokumendid",
+        "type": "Tüüp"
+      }
+    },
+    "dashboard": {
+      "dragToReorder": "Lohistage ümberjärjestamiseks",
+      "layoutReset": "Lähtesta paigutus"
     }
   },
   "notifications": {

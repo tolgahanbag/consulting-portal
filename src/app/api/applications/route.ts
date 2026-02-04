@@ -7,7 +7,7 @@ import { notifyAdmins } from "@/lib/notifications";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { fullName, email, phone, companyName, companyType, description } = body;
+    const { fullName, email, phone, companyName, companyType, description, status: initialStatus } = body;
 
     if (!fullName || !email || !phone || !companyName || !companyType) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -15,6 +15,14 @@ export async function POST(req: NextRequest) {
 
     const session = await getServerSession(authOptions);
     const userId = (session?.user as { id?: string })?.id || null;
+    const userRole = (session?.user as { role?: string })?.role;
+
+    // Only admins can set an initial status other than NEW
+    const validStatuses = ["NEW", "IN_REVIEW", "QUOTED", "ACCEPTED", "IN_PROGRESS", "COMPLETED"];
+    const status =
+      userRole === "ADMIN" && initialStatus && validStatuses.includes(initialStatus)
+        ? initialStatus
+        : "NEW";
 
     const application = await prisma.application.create({
       data: {
@@ -25,7 +33,7 @@ export async function POST(req: NextRequest) {
         companyName,
         companyType,
         description: description || "",
-        status: "NEW",
+        status,
       },
     });
 

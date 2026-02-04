@@ -191,7 +191,27 @@
     "sidebar": {
       "dashboard": "Gösterge Paneli",
       "applications": "Başvurular",
-      "documents": "Evraklar"
+      "kanban": "Kanban Panosu",
+      "documents": "Evraklar",
+      "search": "Ara"
+    },
+    "commandPalette": {
+      "placeholder": "Başvuru veya sayfa ara...",
+      "navigation": "Navigasyon",
+      "applications": "Başvurular",
+      "noResults": "Sonuç bulunamadı",
+      "recentlyVisited": "Son Ziyaret Edilenler"
+    },
+    "viewToggle": {
+      "table": "Tablo",
+      "board": "Pano"
+    },
+    "bulkActions": {
+      "selected": "{count} seçili",
+      "changeStatus": "Durum Değiştir",
+      "delete": "Sil",
+      "confirmDelete": "Seçili başvuruları sil?",
+      "confirmDeleteMessage": "{count} başvuruyu silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
     },
     "tabs": {
       "overview": "Genel Bakış",
@@ -268,6 +288,24 @@
       "companyName": "Şirket Adı",
       "registrationNumber": "Sicil Numarası",
       "registrationDate": "Kuruluş Tarihi"
+    },
+    "kanban": {
+      "addCard": "+ Yeni",
+      "quickAdd": {
+        "companyName": "Şirket Adı",
+        "fullName": "Ad Soyad",
+        "email": "E-posta",
+        "phone": "Telefon"
+      },
+      "peek": {
+        "contact": "Kişi",
+        "documents": "Evrak",
+        "type": "Tür"
+      }
+    },
+    "dashboard": {
+      "dragToReorder": "Sıralamayı değiştirmek için sürükleyin",
+      "layoutReset": "Düzeni sıfırla"
     }
   },
   "notifications": {

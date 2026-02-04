@@ -2,10 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import { createNotification } from "@/lib/notifications";
+import { uploadFile, generateObjectKey } from "@/lib/storage";
 
 export async function POST(
   req: NextRequest,
@@ -27,20 +26,33 @@ export async function POST(
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    const ext = file.name.split(".").pop();
-    const fileName = `${uuidv4()}.${ext}`;
-    const uploadDir = path.join(process.cwd(), "uploads", "company");
-    await mkdir(uploadDir, { recursive: true });
-    const filePath = path.join(uploadDir, fileName);
-
+    const uuid = uuidv4();
     const bytes = await file.arrayBuffer();
-    await writeFile(filePath, Buffer.from(bytes));
+    const buffer = Buffer.from(bytes);
+
+    let filePath: string;
+
+    try {
+      const objectKey = generateObjectKey("company", file.name, uuid);
+      await uploadFile(objectKey, buffer, file.type);
+      filePath = objectKey;
+    } catch {
+      // Fallback to local storage if R2 is not configured
+      const { writeFile, mkdir } = await import("fs/promises");
+      const path = await import("path");
+      const ext = file.name.split(".").pop();
+      const fileName = `${uuid}.${ext}`;
+      const uploadDir = path.join(process.cwd(), "uploads", "company");
+      await mkdir(uploadDir, { recursive: true });
+      await writeFile(path.join(uploadDir, fileName), buffer);
+      filePath = `/uploads/company/${fileName}`;
+    }
 
     const document = await prisma.companyDocument.create({
       data: {
         companyRecordId: id,
         fileName: file.name,
-        filePath: `/uploads/company/${fileName}`,
+        filePath,
         fileType: file.type,
         category,
       },

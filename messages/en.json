@@ -191,7 +191,27 @@
     "sidebar": {
       "dashboard": "Dashboard",
       "applications": "Applications",
-      "documents": "Documents"
+      "kanban": "Kanban Board",
+      "documents": "Documents",
+      "search": "Search"
+    },
+    "commandPalette": {
+      "placeholder": "Search applications, pages...",
+      "navigation": "Navigation",
+      "applications": "Applications",
+      "noResults": "No results found",
+      "recentlyVisited": "Recently Visited"
+    },
+    "viewToggle": {
+      "table": "Table",
+      "board": "Board"
+    },
+    "bulkActions": {
+      "selected": "{count} selected",
+      "changeStatus": "Change Status",
+      "delete": "Delete",
+      "confirmDelete": "Delete selected applications?",
+      "confirmDeleteMessage": "Are you sure you want to delete {count} application(s)? This cannot be undone."
     },
     "tabs": {
       "overview": "Overview",
@@ -268,6 +288,24 @@
       "companyName": "Company Name",
       "registrationNumber": "Registration Number",
       "registrationDate": "Registration Date"
+    },
+    "kanban": {
+      "addCard": "+ New",
+      "quickAdd": {
+        "companyName": "Company Name",
+        "fullName": "Full Name",
+        "email": "Email",
+        "phone": "Phone"
+      },
+      "peek": {
+        "contact": "Contact",
+        "documents": "Documents",
+        "type": "Type"
+      }
+    },
+    "dashboard": {
+      "dragToReorder": "Drag to reorder",
+      "layoutReset": "Reset layout"
     }
   },
   "notifications": {

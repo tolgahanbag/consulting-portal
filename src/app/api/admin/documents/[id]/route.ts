@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { unlink } from "fs/promises";
-import path from "path";
+import { deleteFile, isLocalPath } from "@/lib/storage";
 
 export async function DELETE(
   req: NextRequest,
@@ -27,10 +26,18 @@ export async function DELETE(
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
 
-    // Delete physical file (don't fail if file doesn't exist)
+    // Delete the file (don't fail if file doesn't exist)
     try {
-      const filePath = path.join(process.cwd(), document.filePath);
-      await unlink(filePath);
+      if (isLocalPath(document.filePath)) {
+        // Legacy local file
+        const { unlink } = await import("fs/promises");
+        const path = await import("path");
+        const filePath = path.join(process.cwd(), document.filePath);
+        await unlink(filePath);
+      } else {
+        // Delete from R2
+        await deleteFile(document.filePath);
+      }
     } catch {
       // File may already be deleted, continue
     }
