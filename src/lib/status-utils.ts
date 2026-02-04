@@ -28,6 +28,25 @@ export function getCategoryBadgeClass(category: string): string {
   }
 }
 
+export function getNotionStatusColor(status: string): { dot: string; bg: string; text: string } {
+  switch (status) {
+    case "NEW":
+      return { dot: "bg-blue-500", bg: "bg-blue-50", text: "text-blue-700" };
+    case "IN_REVIEW":
+      return { dot: "bg-yellow-500", bg: "bg-yellow-50", text: "text-yellow-700" };
+    case "QUOTED":
+      return { dot: "bg-purple-500", bg: "bg-purple-50", text: "text-purple-700" };
+    case "ACCEPTED":
+      return { dot: "bg-green-500", bg: "bg-green-50", text: "text-green-700" };
+    case "IN_PROGRESS":
+      return { dot: "bg-orange-500", bg: "bg-orange-50", text: "text-orange-700" };
+    case "COMPLETED":
+      return { dot: "bg-emerald-500", bg: "bg-emerald-50", text: "text-emerald-700" };
+    default:
+      return { dot: "bg-gray-400", bg: "bg-gray-50", text: "text-gray-600" };
+  }
+}
+
 export function formatFileType(mime: string): string {
   if (mime.includes("pdf")) return "PDF";
   if (mime.includes("jpeg") || mime.includes("jpg")) return "JPEG";

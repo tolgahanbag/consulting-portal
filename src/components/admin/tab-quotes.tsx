@@ -11,6 +11,17 @@ interface TabQuotesProps {
   onRefresh: () => void;
 }
 
+function getQuoteStatusColor(status: string) {
+  switch (status) {
+    case "ACCEPTED":
+      return { dot: "bg-green-500", bg: "bg-green-50", text: "text-green-700" };
+    case "REJECTED":
+      return { dot: "bg-red-500", bg: "bg-red-50", text: "text-red-700" };
+    default:
+      return { dot: "bg-yellow-500", bg: "bg-yellow-50", text: "text-yellow-700" };
+  }
+}
+
 export function TabQuotes({ quotes, applicationId, onRefresh }: TabQuotesProps) {
   const t = useTranslations();
   const [showModal, setShowModal] = useState(false);
@@ -18,49 +29,45 @@ export function TabQuotes({ quotes, applicationId, onRefresh }: TabQuotesProps) 
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-display font-semibold text-navy-900">
+        <h3 className="text-sm font-semibold text-notion-text">
           {t("admin.tabs.quotes")}
         </h3>
         <button
           onClick={() => setShowModal(true)}
-          className="bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 px-4 py-2 rounded-xl text-sm font-medium hover:shadow-lg transition-all duration-300"
+          className="text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors"
         >
-          {t("admin.sendQuote")}
+          + {t("admin.sendQuote")}
         </button>
       </div>
 
       {quotes.length === 0 ? (
-        <div className="glass-card rounded-2xl p-8 text-center">
-          <p className="text-navy-400 text-sm">{t("common.noData")}</p>
+        <div className="notion-card p-8 text-center">
+          <p className="text-notion-text-secondary text-sm">{t("common.noData")}</p>
         </div>
       ) : (
-        <div className="space-y-3">
-          {quotes.map((q) => (
-            <div key={q.id} className="glass-card rounded-2xl p-4">
-              <div className="flex justify-between items-center">
-                <p className="font-display font-bold text-navy-900">
-                  {q.amount} {q.currency}
-                </p>
-                <span
-                  className={`text-xs px-2.5 py-1 rounded-xl font-medium ${
-                    q.status === "ACCEPTED"
-                      ? "bg-green-50 text-green-600 border border-green-200"
-                      : q.status === "REJECTED"
-                      ? "bg-red-50 text-red-600 border border-red-200"
-                      : "bg-gold-50 text-gold-700 border border-gold-200"
-                  }`}
-                >
-                  {q.status}
-                </span>
+        <div className="space-y-2">
+          {quotes.map((q) => {
+            const sc = getQuoteStatusColor(q.status);
+            return (
+              <div key={q.id} className="notion-card">
+                <div className="flex justify-between items-center">
+                  <p className="text-sm font-semibold text-notion-text">
+                    {q.amount} {q.currency}
+                  </p>
+                  <span className={`inline-flex items-center gap-1.5 text-xs font-medium px-2 py-0.5 rounded ${sc.bg} ${sc.text}`}>
+                    <span className={`w-2 h-2 rounded-full ${sc.dot}`} />
+                    {q.status}
+                  </span>
+                </div>
+                <p className="text-sm text-notion-text-secondary mt-1">{q.description}</p>
+                {q.validUntil && (
+                  <p className="text-xs text-notion-text-secondary mt-2">
+                    {t("admin.quoteForm.validUntil")}: {new Date(q.validUntil).toLocaleDateString()}
+                  </p>
+                )}
               </div>
-              <p className="text-sm text-navy-400 mt-1">{q.description}</p>
-              {q.validUntil && (
-                <p className="text-xs text-navy-300 mt-2">
-                  {t("admin.quoteForm.validUntil")}: {new Date(q.validUntil).toLocaleDateString()}
-                </p>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
 

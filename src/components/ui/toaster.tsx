@@ -22,28 +22,16 @@ export function toast(message: string, type: Toast["type"] = "info") {
   }, 4000);
 }
 
-const iconMap = {
-  success: (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  ),
-  error: (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  ),
-  info: (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  ),
+const colorMap = {
+  success: "bg-white border-green-200 text-green-700",
+  error: "bg-white border-red-200 text-red-700",
+  info: "bg-white border-notion-border text-notion-text",
 };
 
-const colorMap = {
-  success: "bg-green-600 border-green-500",
-  error: "bg-red-600 border-red-500",
-  info: "bg-navy-800 border-navy-700",
+const dotMap = {
+  success: "bg-green-500",
+  error: "bg-red-500",
+  info: "bg-blue-500",
 };
 
 export function Toaster() {
@@ -59,13 +47,13 @@ export function Toaster() {
   if (toasts.length === 0) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex flex-col gap-3">
+    <div className="fixed bottom-6 right-6 z-[100] flex flex-col gap-2">
       {toasts.map((t) => (
         <div
           key={t.id}
-          className={`flex items-center gap-3 rounded-xl px-5 py-3.5 text-white text-sm font-medium shadow-glass-lg border animate-slide-in-right backdrop-blur-sm ${colorMap[t.type]}`}
+          className={`flex items-center gap-2.5 rounded-lg px-4 py-3 text-sm font-medium shadow-lg border animate-slide-in-right ${colorMap[t.type]}`}
         >
-          <span className="opacity-80">{iconMap[t.type]}</span>
+          <span className={`w-2 h-2 rounded-full flex-shrink-0 ${dotMap[t.type]}`} />
           {t.message}
         </div>
       ))}

@@ -167,6 +167,43 @@
     border-radius: 2px;
   }
 
+  /* Notion Card */
+  .notion-card {
+    @apply bg-white rounded-lg border border-notion-border p-5 transition-shadow duration-200;
+  }
+  .notion-card:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Notion Sidebar Item */
+  .notion-sidebar-item {
+    @apply flex items-center gap-2 px-2 py-1.5 rounded-md text-sm transition-colors duration-100 cursor-pointer;
+    color: #37352f;
+  }
+  .notion-sidebar-item:hover {
+    background: #efefef;
+  }
+  .notion-sidebar-item.active {
+    background: #efefef;
+    font-weight: 500;
+  }
+
+  /* Notion Input */
+  .notion-input {
+    @apply w-full px-3 py-2 rounded-md text-sm transition-all duration-200;
+    background: #ffffff;
+    border: 1px solid #e9e9e7;
+    color: #37352f;
+  }
+  .notion-input:focus {
+    outline: none;
+    border-color: #2eaadc;
+    box-shadow: 0 0 0 2px rgba(46, 170, 220, 0.15);
+  }
+  .notion-input::placeholder {
+    color: #c4c4c0;
+  }
+
   /* Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;

@@ -32,23 +32,23 @@ export function TabNotes({ notes, applicationId, onRefresh }: TabNotesProps) {
 
   return (
     <div>
-      <h3 className="font-display font-semibold text-navy-900 mb-4">
+      <h3 className="text-sm font-semibold text-notion-text mb-4">
         {t("admin.notes.title")}
       </h3>
 
-      {/* Inline add note form */}
-      <form onSubmit={addNote} className="glass-card rounded-2xl p-4 mb-4">
+      {/* Add note */}
+      <form onSubmit={addNote} className="notion-card mb-4">
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
           rows={3}
           placeholder={t("admin.notes.placeholder")}
-          className="w-full px-3 py-2 border border-navy-200 rounded-xl bg-white/50 focus:outline-none focus:ring-2 focus:ring-gold-500/30 focus:border-gold-500 transition-all text-sm"
+          className="notion-input resize-none"
         />
         <div className="flex justify-end mt-2">
           <button
             type="submit"
-            className="bg-navy-900 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-navy-800 transition-all duration-300"
+            className="px-3 py-1.5 rounded-md text-sm font-medium bg-notion-text text-white hover:bg-notion-text/90 transition-colors"
           >
             {t("admin.addNote")}
           </button>
@@ -56,15 +56,15 @@ export function TabNotes({ notes, applicationId, onRefresh }: TabNotesProps) {
       </form>
 
       {notes.length === 0 ? (
-        <div className="glass-card rounded-2xl p-8 text-center">
-          <p className="text-navy-400 text-sm">{t("admin.notes.empty")}</p>
+        <div className="notion-card p-8 text-center">
+          <p className="text-notion-text-secondary text-sm">{t("admin.notes.empty")}</p>
         </div>
       ) : (
-        <div className="glass-card rounded-2xl divide-y divide-navy-100/30">
+        <div className="space-y-2">
           {notes.map((n) => (
-            <div key={n.id} className="p-4">
-              <p className="text-sm text-navy-700">{n.content}</p>
-              <p className="text-xs text-navy-300 mt-1">
+            <div key={n.id} className="notion-card">
+              <p className="text-sm text-notion-text whitespace-pre-wrap">{n.content}</p>
+              <p className="text-xs text-notion-text-secondary mt-2">
                 {new Date(n.createdAt).toLocaleString()}
               </p>
             </div>

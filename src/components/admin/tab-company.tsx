@@ -43,11 +43,11 @@ export function TabCompany({ companyRecord, applicationId, companyName, onRefres
   if (!companyRecord) {
     return (
       <div>
-        <div className="glass-card rounded-2xl p-8 text-center">
-          <p className="text-navy-400 text-sm mb-4">{t("admin.company.empty")}</p>
+        <div className="notion-card p-8 text-center">
+          <p className="text-notion-text-secondary text-sm mb-4">{t("admin.company.empty")}</p>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="bg-green-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-green-700 transition-all duration-300"
+            className="px-3 py-1.5 rounded-md text-sm font-medium bg-green-600 text-white hover:bg-green-700 transition-colors"
           >
             {t("admin.companySetup")}
           </button>
@@ -66,62 +66,54 @@ export function TabCompany({ companyRecord, applicationId, companyName, onRefres
     );
   }
 
+  const properties = [
+    { label: t("admin.company.companyName"), value: companyRecord.companyName },
+    { label: t("company.registrationNumber"), value: companyRecord.registrationNumber || "-" },
+    {
+      label: t("company.registrationDate"),
+      value: companyRecord.registrationDate
+        ? new Date(companyRecord.registrationDate).toLocaleDateString()
+        : "-",
+    },
+  ];
+
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-display font-semibold text-navy-900">{t("company.title")}</h3>
+        <h3 className="text-sm font-semibold text-notion-text">{t("company.title")}</h3>
         <button
           onClick={() => setShowUploadModal(true)}
-          className="bg-green-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-green-700 transition-all duration-300"
+          className="text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors"
         >
-          {t("admin.company.uploadDocument")}
+          + {t("admin.company.uploadDocument")}
         </button>
       </div>
 
-      <div className="glass-card rounded-2xl p-6">
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div>
-            <p className="text-xs font-medium text-navy-400 uppercase tracking-wide mb-1">
-              {t("admin.company.companyName")}
-            </p>
-            <p className="text-sm font-medium text-navy-900">{companyRecord.companyName}</p>
-          </div>
-          <div>
-            <p className="text-xs font-medium text-navy-400 uppercase tracking-wide mb-1">
-              {t("company.registrationNumber")}
-            </p>
-            <p className="text-sm font-medium text-navy-900">{companyRecord.registrationNumber || "-"}</p>
-          </div>
-          <div>
-            <p className="text-xs font-medium text-navy-400 uppercase tracking-wide mb-1">
-              {t("company.registrationDate")}
-            </p>
-            <p className="text-sm font-medium text-navy-900">
-              {companyRecord.registrationDate
-                ? new Date(companyRecord.registrationDate).toLocaleDateString()
-                : "-"}
-            </p>
-          </div>
-        </div>
-
-        {companyRecord.documents.length > 0 && (
-          <div className="border-t border-navy-100/30 pt-4 mt-4">
-            <p className="text-xs font-medium text-navy-400 uppercase tracking-wide mb-3">
-              {t("company.documents")}
-            </p>
-            <div className="space-y-2">
-              {companyRecord.documents.map((doc) => (
-                <div key={doc.id} className="flex items-center justify-between p-3 bg-navy-50/50 rounded-xl">
-                  <div>
-                    <p className="text-sm font-medium text-navy-900">{doc.fileName}</p>
-                    <p className="text-xs text-navy-400">{t(`company.categories.${doc.category}`)}</p>
-                  </div>
-                </div>
-              ))}
+      {/* Company Properties */}
+      <div className="notion-card mb-4">
+        <div className="divide-y divide-notion-border">
+          {properties.map((prop, idx) => (
+            <div key={idx} className="flex py-2 text-sm">
+              <span className="w-48 flex-shrink-0 text-notion-text-secondary">{prop.label}</span>
+              <span className="text-notion-text">{prop.value}</span>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
+
+      {/* Company Documents */}
+      {companyRecord.documents.length > 0 && (
+        <div className="border border-notion-border rounded-lg divide-y divide-notion-border">
+          {companyRecord.documents.map((doc) => (
+            <div key={doc.id} className="flex items-center justify-between px-4 py-3 hover:bg-notion-bg-hover transition-colors">
+              <div>
+                <p className="text-sm font-medium text-notion-text">{doc.fileName}</p>
+                <p className="text-xs text-notion-text-secondary">{t(`company.categories.${doc.category}`)}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Upload document modal */}
       <Modal
@@ -134,13 +126,13 @@ export function TabCompany({ companyRecord, applicationId, companyName, onRefres
       >
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-navy-500 mb-1">
+            <label className="block text-sm text-notion-text-secondary mb-1">
               {t("admin.company.selectCategory")}
             </label>
             <select
               value={uploadCategory}
               onChange={(e) => setUploadCategory(e.target.value)}
-              className="w-full px-3 py-2 border border-navy-200 rounded-xl bg-white/50 focus:outline-none focus:ring-2 focus:ring-gold-500/30 focus:border-gold-500 transition-all text-sm"
+              className="notion-input"
             >
               {["REGISTRATION", "TAX", "LICENSE", "OTHER"].map((cat) => (
                 <option key={cat} value={cat}>
@@ -160,13 +152,13 @@ export function TabCompany({ companyRecord, applicationId, companyName, onRefres
                 setShowUploadModal(false);
                 selectedFile.current = null;
               }}
-              className="px-4 py-2 rounded-xl text-sm font-medium text-navy-600 border border-navy-200 hover:border-navy-300 transition-all duration-300"
+              className="px-3 py-1.5 rounded-md text-sm text-notion-text-secondary border border-notion-border hover:bg-notion-bg-hover transition-colors"
             >
               {t("common.cancel")}
             </button>
             <button
               onClick={handleUploadDocument}
-              className="bg-gradient-to-r from-gold-500 to-gold-400 text-navy-950 px-4 py-2 rounded-xl text-sm font-medium hover:shadow-lg transition-all duration-300"
+              className="px-3 py-1.5 rounded-md text-sm font-medium bg-notion-text text-white hover:bg-notion-text/90 transition-colors"
             >
               {t("common.upload")}
             </button>

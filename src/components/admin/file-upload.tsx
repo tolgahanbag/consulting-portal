@@ -43,7 +43,7 @@ export function FileUpload({
   return (
     <div>
       {label && (
-        <label className="block text-sm font-medium text-navy-500 mb-1">{label}</label>
+        <label className="block text-sm text-notion-text-secondary mb-1">{label}</label>
       )}
       <div
         onClick={() => inputRef.current?.click()}
@@ -53,10 +53,10 @@ export function FileUpload({
         }}
         onDragLeave={() => setDragActive(false)}
         onDrop={handleDrop}
-        className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-all duration-300 ${
+        className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-all duration-200 ${
           dragActive
-            ? "border-gold-500 bg-gold-50/30"
-            : "border-navy-200 hover:border-gold-400 bg-white/30"
+            ? "border-blue-400 bg-blue-50"
+            : "border-notion-border hover:border-notion-text-secondary bg-notion-bg-secondary"
         }`}
       >
         <input
@@ -70,7 +70,7 @@ export function FileUpload({
           }}
         />
         <svg
-          className="w-8 h-8 mx-auto mb-2 text-navy-300"
+          className="w-6 h-6 mx-auto mb-2 text-notion-text-secondary"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -83,13 +83,13 @@ export function FileUpload({
           />
         </svg>
         {fileName ? (
-          <p className="text-sm text-navy-700 font-medium">
+          <p className="text-sm text-notion-text font-medium">
             {t("fileUpload.selectedFile")}: {fileName}
           </p>
         ) : (
           <>
-            <p className="text-sm text-navy-500">{t("fileUpload.dragDrop")}</p>
-            <p className="text-xs text-navy-300 mt-1">
+            <p className="text-sm text-notion-text-secondary">{t("fileUpload.dragDrop")}</p>
+            <p className="text-xs text-notion-text-secondary mt-1">
               {t("fileUpload.maxSize", { size: maxSizeMB })}
             </p>
           </>

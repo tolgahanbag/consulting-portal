@@ -78,8 +78,8 @@ export default function AdminApplicationDetailPage({
     return (
       <div className="flex justify-center items-center min-h-[60vh]">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-2 border-navy-200 border-t-gold-500 rounded-full animate-spin" />
-          <p className="text-navy-400 text-sm">{t("common.loading")}</p>
+          <div className="w-6 h-6 border-2 border-notion-border border-t-notion-text rounded-full animate-spin" />
+          <p className="text-notion-text-secondary text-sm">{t("common.loading")}</p>
         </div>
       </div>
     );
@@ -95,7 +95,7 @@ export default function AdminApplicationDetailPage({
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div>
       <ApplicationHeader app={app} onStatusChange={updateStatus} />
       <ApplicationTabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
 

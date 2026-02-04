@@ -39,6 +39,15 @@ const config: Config = {
         slate: {
           850: "#172033",
         },
+        notion: {
+          bg: "#ffffff",
+          "bg-secondary": "#f7f6f3",
+          "bg-hover": "#efefef",
+          text: "#37352f",
+          "text-secondary": "#787774",
+          border: "#e9e9e7",
+          sidebar: "#fbfbfa",
+        },
       },
       fontFamily: {
         display: ["Playfair Display", "Georgia", "serif"],
