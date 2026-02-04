@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { createNotification } from "@/lib/notifications";
+import { createAuditLog } from "@/lib/audit";
 
 export async function POST(req: NextRequest) {
   try {
@@ -34,6 +35,14 @@ export async function POST(req: NextRequest) {
     await prisma.application.update({
       where: { id: applicationId },
       data: { status: "QUOTED" },
+    });
+
+    await createAuditLog({
+      userId: user.id,
+      action: "CREATE",
+      entity: "QUOTE",
+      entityId: quote.id,
+      details: { applicationId, amount, currency },
     });
 
     // Notify client if they have a user account

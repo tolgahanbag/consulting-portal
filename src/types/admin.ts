@@ -99,4 +99,23 @@ export interface AppOption {
   companyName: string;
 }
 
+export interface AdminUser {
+  id: string;
+  email: string;
+  name: string;
+  phone: string | null;
+  role: string;
+  createdAt: string;
+  _count: {
+    applications: number;
+    documents: number;
+  };
+}
+
+export interface UserStats {
+  total: number;
+  admins: number;
+  clients: number;
+}
+
 export type TabId = "overview" | "quotes" | "workflow" | "documents" | "notes" | "company";

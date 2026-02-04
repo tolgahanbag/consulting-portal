@@ -143,3 +143,15 @@ model CompanyDocument {
   category        String        @default("OTHER") // REGISTRATION, TAX, LICENSE, OTHER
   createdAt       DateTime      @default(now())
 }
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  userName   String?
+  action     String   // CREATE, UPDATE, DELETE, LOGIN, LOGOUT
+  entity     String   // APPLICATION, QUOTE, WORKFLOW, DOCUMENT, USER, COMPANY
+  entityId   String?
+  details    String?  // JSON string with change details
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+}

@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { notifyAdmins } from "@/lib/notifications";
+import { createAuditLog } from "@/lib/audit";
 
 export async function POST(req: NextRequest) {
   try {
@@ -35,6 +36,15 @@ export async function POST(req: NextRequest) {
         description: description || "",
         status,
       },
+    });
+
+    await createAuditLog({
+      userId: userId,
+      userName: fullName,
+      action: "CREATE",
+      entity: "APPLICATION",
+      entityId: application.id,
+      details: { companyName, companyType, status },
     });
 
     // Notify admins

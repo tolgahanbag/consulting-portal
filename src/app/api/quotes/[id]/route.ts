@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { createAuditLog } from "@/lib/audit";
 
-export async function POST(
+export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -15,15 +16,31 @@ export async function POST(
     }
 
     const { id } = await params;
-    const { content } = await req.json();
+    const body = await req.json();
 
-    const note = await prisma.applicationNote.create({
-      data: { applicationId: id, content },
+    const data: Record<string, unknown> = {};
+    if (body.amount !== undefined) data.amount = parseFloat(body.amount);
+    if (body.currency !== undefined) data.currency = body.currency;
+    if (body.description !== undefined) data.description = body.description;
+    if (body.validUntil !== undefined) data.validUntil = new Date(body.validUntil);
+    if (body.status !== undefined) data.status = body.status;
+
+    const quote = await prisma.quote.update({
+      where: { id },
+      data,
     });
 
-    return NextResponse.json({ note }, { status: 201 });
+    await createAuditLog({
+      userId: user.id,
+      action: "UPDATE",
+      entity: "QUOTE",
+      entityId: id,
+      details: data,
+    });
+
+    return NextResponse.json({ quote });
   } catch (error) {
-    console.error("Note creation error:", error);
+    console.error("Quote update error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
@@ -39,20 +56,20 @@ export async function DELETE(
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    // Ensure params is consumed (Next.js requirement)
-    await params;
+    const { id } = await params;
 
-    const url = new URL(req.url);
-    const noteId = url.searchParams.get("noteId");
-    if (!noteId) {
-      return NextResponse.json({ error: "Missing noteId" }, { status: 400 });
-    }
+    await prisma.quote.delete({ where: { id } });
 
-    await prisma.applicationNote.delete({ where: { id: noteId } });
+    await createAuditLog({
+      userId: user.id,
+      action: "DELETE",
+      entity: "QUOTE",
+      entityId: id,
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Note delete error:", error);
+    console.error("Quote delete error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
