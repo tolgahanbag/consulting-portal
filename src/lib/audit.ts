@@ -4,7 +4,15 @@ interface AuditLogParams {
   userId?: string | null;
   userName?: string | null;
   action: "CREATE" | "UPDATE" | "DELETE" | "LOGIN" | "LOGOUT";
-  entity: "APPLICATION" | "QUOTE" | "WORKFLOW" | "DOCUMENT" | "USER" | "COMPANY" | "NOTE";
+  entity:
+    | "APPLICATION"
+    | "QUOTE"
+    | "WORKFLOW"
+    | "DOCUMENT"
+    | "USER"
+    | "COMPANY"
+    | "NOTE"
+    | "SETTING";
   entityId?: string | null;
   details?: Record<string, unknown> | null;
   ipAddress?: string | null;

@@ -17,6 +17,10 @@ export async function POST(
     const { id } = await params;
     const { action } = await req.json(); // "accept" or "reject"
 
+    if (action !== "accept" && action !== "reject") {
+      return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+    }
+
     const quote = await prisma.quote.findUnique({
       where: { id },
       include: { application: true },

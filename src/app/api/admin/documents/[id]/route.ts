@@ -32,7 +32,10 @@ export async function DELETE(
         // Legacy local file
         const { unlink } = await import("fs/promises");
         const path = await import("path");
-        const filePath = path.join(process.cwd(), document.filePath);
+        const filePath = path.join(
+          process.cwd(),
+          document.filePath.replace(/^\/+/, "")
+        );
         await unlink(filePath);
       } else {
         // Delete from R2

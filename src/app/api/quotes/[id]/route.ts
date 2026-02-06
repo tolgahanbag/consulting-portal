@@ -19,10 +19,22 @@ export async function PATCH(
     const body = await req.json();
 
     const data: Record<string, unknown> = {};
-    if (body.amount !== undefined) data.amount = parseFloat(body.amount);
+    if (body.amount !== undefined) {
+      const parsedAmount = Number(body.amount);
+      if (!Number.isFinite(parsedAmount)) {
+        return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
+      }
+      data.amount = parsedAmount;
+    }
     if (body.currency !== undefined) data.currency = body.currency;
     if (body.description !== undefined) data.description = body.description;
-    if (body.validUntil !== undefined) data.validUntil = new Date(body.validUntil);
+    if (body.validUntil !== undefined) {
+      const parsedValidUntil = new Date(body.validUntil);
+      if (Number.isNaN(parsedValidUntil.getTime())) {
+        return NextResponse.json({ error: "Invalid validUntil date" }, { status: 400 });
+      }
+      data.validUntil = parsedValidUntil;
+    }
     if (body.status !== undefined) data.status = body.status;
 
     const quote = await prisma.quote.update({

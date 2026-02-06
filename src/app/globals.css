@@ -170,6 +170,8 @@
   /* Notion Card */
   .notion-card {
     @apply bg-white rounded-lg border border-notion-border p-5 transition-shadow duration-200;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfbf7 100%);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 10px 30px rgba(15, 23, 42, 0.06);
   }
   .notion-card:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -179,6 +181,7 @@
   .notion-sidebar-item {
     @apply flex items-center gap-2 px-2 py-1.5 rounded-md text-sm transition-colors duration-100 cursor-pointer;
     color: #37352f;
+    position: relative;
   }
   .notion-sidebar-item:hover {
     background: #efefef;
@@ -186,6 +189,16 @@
   .notion-sidebar-item.active {
     background: #efefef;
     font-weight: 500;
+  }
+  .notion-sidebar-item.active::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 20%;
+    bottom: 20%;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #d4a032, #f5c04c);
   }
 
   /* Notion Input */
@@ -197,11 +210,33 @@
   }
   .notion-input:focus {
     outline: none;
-    border-color: #2eaadc;
-    box-shadow: 0 0 0 2px rgba(46, 170, 220, 0.15);
+    border-color: #d4a032;
+    box-shadow: 0 0 0 2px rgba(212, 160, 50, 0.12);
   }
   .notion-input::placeholder {
     color: #c4c4c0;
+  }
+
+  /* Admin Shell */
+  .admin-shell {
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(212, 160, 50, 0.08), transparent 55%),
+      radial-gradient(900px 500px at 10% 10%, rgba(74, 86, 130, 0.08), transparent 50%),
+      linear-gradient(180deg, #fbfbfa 0%, #f5f4f1 100%);
+  }
+  .admin-topbar {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(233, 233, 231, 0.9);
+  }
+  .admin-chip {
+    @apply text-[10px] font-semibold tracking-[0.2em] uppercase px-2 py-1 rounded-full;
+    background: rgba(212, 160, 50, 0.12);
+    color: #8a6720;
+  }
+  .admin-sidebar {
+    background: linear-gradient(180deg, #fbfbfa 0%, #f3f2ee 100%);
   }
 
   /* Scrollbar */

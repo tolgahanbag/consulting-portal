@@ -109,31 +109,49 @@ export async function DELETE(
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    // Delete related records in order
-    await prisma.applicationNote.deleteMany({ where: { applicationId: id } });
+    await prisma.$transaction(async (tx) => {
+      // Delete related records in order
+      await tx.applicationNote.deleteMany({ where: { applicationId: id } });
 
-    // Delete workflow requests and their documents
-    const workflows = await prisma.workflow.findMany({
-      where: { applicationId: id },
-      select: { id: true },
+      // Delete workflow requests and their documents
+      const workflows = await tx.workflow.findMany({
+        where: { applicationId: id },
+        select: { id: true },
+      });
+      const workflowIds = workflows.map((w) => w.id);
+      if (workflowIds.length > 0) {
+        const requests = await tx.workflowRequest.findMany({
+          where: { workflowId: { in: workflowIds } },
+          select: { id: true },
+        });
+        const requestIds = requests.map((r) => r.id);
+        if (requestIds.length > 0) {
+          await tx.document.deleteMany({
+            where: { workflowRequestId: { in: requestIds } },
+          });
+        }
+        await tx.workflowRequest.deleteMany({
+          where: { workflowId: { in: workflowIds } },
+        });
+      }
+      await tx.workflow.deleteMany({ where: { applicationId: id } });
+      await tx.quote.deleteMany({ where: { applicationId: id } });
+      await tx.document.deleteMany({ where: { applicationId: id } });
+
+      // Delete company record and its documents
+      const companyRecord = await tx.companyRecord.findUnique({
+        where: { applicationId: id },
+        select: { id: true },
+      });
+      if (companyRecord) {
+        await tx.companyDocument.deleteMany({
+          where: { companyRecordId: companyRecord.id },
+        });
+        await tx.companyRecord.delete({ where: { id: companyRecord.id } });
+      }
+
+      await tx.application.delete({ where: { id } });
     });
-    const workflowIds = workflows.map((w) => w.id);
-    if (workflowIds.length > 0) {
-      await prisma.document.deleteMany({ where: { workflowRequestId: { in: (await prisma.workflowRequest.findMany({ where: { workflowId: { in: workflowIds } }, select: { id: true } })).map(r => r.id) } } });
-      await prisma.workflowRequest.deleteMany({ where: { workflowId: { in: workflowIds } } });
-    }
-    await prisma.workflow.deleteMany({ where: { applicationId: id } });
-    await prisma.quote.deleteMany({ where: { applicationId: id } });
-    await prisma.document.deleteMany({ where: { applicationId: id } });
-
-    // Delete company record and its documents
-    const companyRecord = await prisma.companyRecord.findUnique({ where: { applicationId: id } });
-    if (companyRecord) {
-      await prisma.companyDocument.deleteMany({ where: { companyRecordId: companyRecord.id } });
-      await prisma.companyRecord.delete({ where: { applicationId: id } });
-    }
-
-    await prisma.application.delete({ where: { id } });
 
     await createAuditLog({
       userId: user.id,

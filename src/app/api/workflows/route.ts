@@ -13,6 +13,10 @@ export async function POST(req: NextRequest) {
     }
 
     const { applicationId, title, description, order } = await req.json();
+    const parsedOrder = Number(order);
+    if (!Number.isInteger(parsedOrder) || parsedOrder < 0) {
+      return NextResponse.json({ error: "Invalid order" }, { status: 400 });
+    }
 
     const application = await prisma.application.findUnique({
       where: { id: applicationId },
@@ -26,7 +30,7 @@ export async function POST(req: NextRequest) {
         applicationId,
         title,
         description,
-        order: parseInt(order),
+        order: parsedOrder,
       },
     });
 

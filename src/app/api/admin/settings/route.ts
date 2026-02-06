@@ -88,7 +88,7 @@ export async function PUT(req: NextRequest) {
     await createAuditLog({
       userId: user.id,
       action: "UPDATE",
-      entity: "APPLICATION",
+      entity: "SETTING",
       entityId: setting.id,
       details: { settingKey: key },
     });

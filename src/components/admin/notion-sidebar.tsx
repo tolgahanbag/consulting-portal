@@ -156,7 +156,7 @@ export function NotionSidebar({ onSearchClick }: NotionSidebarProps) {
   }
 
   const sidebarContent = (
-    <div className="flex flex-col h-full bg-notion-sidebar">
+    <div className="flex flex-col h-full bg-notion-sidebar admin-sidebar">
       {/* Workspace header */}
       <div className="flex items-center justify-between px-3 py-3 border-b border-notion-border">
         {!collapsed && (

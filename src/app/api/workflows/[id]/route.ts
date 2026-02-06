@@ -18,6 +18,10 @@ export async function PATCH(
 
     const { id } = await params;
     const { status } = await req.json();
+    const validStatuses = ["PENDING", "IN_PROGRESS", "COMPLETED"];
+    if (!validStatuses.includes(status)) {
+      return NextResponse.json({ error: "Invalid status" }, { status: 400 });
+    }
 
     const workflow = await prisma.workflow.update({
       where: { id },

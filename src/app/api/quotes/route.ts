@@ -15,6 +15,15 @@ export async function POST(req: NextRequest) {
 
     const { applicationId, amount, currency, description, validUntil } = await req.json();
 
+    const parsedAmount = Number(amount);
+    if (!Number.isFinite(parsedAmount)) {
+      return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
+    }
+    const parsedValidUntil = new Date(validUntil);
+    if (Number.isNaN(parsedValidUntil.getTime())) {
+      return NextResponse.json({ error: "Invalid validUntil date" }, { status: 400 });
+    }
+
     const application = await prisma.application.findUnique({
       where: { id: applicationId },
     });
@@ -25,10 +34,10 @@ export async function POST(req: NextRequest) {
     const quote = await prisma.quote.create({
       data: {
         applicationId,
-        amount: parseFloat(amount),
+        amount: parsedAmount,
         currency: currency || "EUR",
         description,
-        validUntil: new Date(validUntil),
+        validUntil: parsedValidUntil,
       },
     });
 

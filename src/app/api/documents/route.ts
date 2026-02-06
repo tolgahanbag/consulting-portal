@@ -5,12 +5,22 @@ import { prisma } from "@/lib/prisma";
 import { v4 as uuidv4 } from "uuid";
 import { notifyAdmins, createNotification } from "@/lib/notifications";
 import { uploadFile, generateObjectKey } from "@/lib/storage";
+import { getRequestIp, rateLimit } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const ip = getRequestIp(req.headers);
+    const limit = rateLimit(`documents:${ip}`, { limit: 20, windowMs: 10 * 60 * 1000 });
+    if (!limit.ok) {
+      return NextResponse.json(
+        { error: "Too many uploads. Try again later." },
+        { status: 429 }
+      );
     }
 
     const user = session.user as { id: string; role: string };
@@ -38,6 +48,51 @@ export async function POST(req: NextRequest) {
     ];
     if (!allowedTypes.includes(file.type)) {
       return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
+    }
+
+    const allowedCategories = ["APPLICATION_DOC", "COMPANY_DOC", "OTHER"];
+    if (!allowedCategories.includes(category)) {
+      return NextResponse.json({ error: "Invalid category" }, { status: 400 });
+    }
+
+    if (user.role !== "ADMIN") {
+      if (applicationId) {
+        const app = await prisma.application.findUnique({
+          where: { id: applicationId },
+          select: { userId: true },
+        });
+        if (!app || app.userId !== user.id) {
+          return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+        }
+      }
+      if (workflowRequestId) {
+        const request = await prisma.workflowRequest.findUnique({
+          where: { id: workflowRequestId },
+          include: { workflow: { select: { application: { select: { userId: true } } } } },
+        });
+        if (!request || request.workflow.application.userId !== user.id) {
+          return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+        }
+      }
+      if (applicationId && workflowRequestId) {
+        const workflow = await prisma.workflowRequest.findUnique({
+          where: { id: workflowRequestId },
+          include: { workflow: { select: { applicationId: true } } },
+        });
+        if (workflow && workflow.workflow.applicationId !== applicationId) {
+          return NextResponse.json(
+            { error: "Application and workflow mismatch" },
+            { status: 400 }
+          );
+        }
+      }
+    }
+
+    if (!applicationId && !workflowRequestId) {
+      return NextResponse.json(
+        { error: "Missing applicationId or workflowRequestId" },
+        { status: 400 }
+      );
     }
 
     const id = uuidv4();

@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Consulting Portal (EstonTurk)
 
-## Getting Started
+Next.js 14 + Prisma + NextAuth tabanlı danışmanlık portalı.  
+Müşteri başvuruları, admin yönetimi, teklif/iş akışı, doküman ve bildirim akışlarını içerir.
 
-First, run the development server:
+## Özellikler
+- Çok dilli arayüz (`tr`, `en`, `et`)
+- Müşteri paneli ve admin paneli
+- Başvuru, teklif ve iş akışı yönetimi
+- Doküman yükleme/indirme (Cloudflare R2 veya lokal fallback)
+- Bildirim, email ve WhatsApp entegrasyonu
+- Audit log ve raporlama
 
+## Gereksinimler
+- Node.js 18+
+- npm
+
+## Kurulum
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Ortam Değişkenleri
+`.env` dosyanızı `.env.example` üzerinden oluşturun.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Gerekli değişkenler:
+- `DATABASE_URL` (SQLite için `file:./prisma/dev.db`)
+- `NEXTAUTH_SECRET`
+- `NEXTAUTH_URL`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Opsiyonel:
+- SMTP (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`)
+- WhatsApp (`WHATSAPP_API_URL`, `WHATSAPP_PHONE_NUMBER_ID`, `WHATSAPP_ACCESS_TOKEN`)
+- Cloudflare R2 (`R2_*`)
 
-## Learn More
+## Veritabanı
+```bash
+npx prisma generate
+npx prisma db push
+```
 
-To learn more about Next.js, take a look at the following resources:
+Seed (varsayılan admin):
+```bash
+npx prisma db seed
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Varsayılan admin:
+- Email: `admin@estonturk.com`
+- Şifre: `admin123`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Çalıştırma
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+## Scriptler
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+npm test
+npm run test:watch
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API Endpoint Özeti
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Kimlik doğrulama:
+- `POST /api/auth/register` yeni kullanıcı kaydı
+- `POST /api/auth/[...nextauth]` giriş (NextAuth)
+
+Başvurular:
+- `GET /api/applications` başvuruları listeler (admin: tümü, client: kendi başvuruları)
+- `POST /api/applications` yeni başvuru oluşturur
+- `GET /api/applications/:id` başvuru detayı
+- `PATCH /api/applications/:id` başvuru günceller (admin)
+- `DELETE /api/applications/:id` başvuru siler (admin)
+- `POST /api/applications/:id/notes` not ekler (admin)
+- `DELETE /api/applications/:id/notes?noteId=...` not siler (admin)
+
+Teklifler:
+- `POST /api/quotes` teklif oluşturur (admin)
+- `PATCH /api/quotes/:id` teklif günceller (admin)
+- `DELETE /api/quotes/:id` teklif siler (admin)
+- `POST /api/quotes/:id/respond` teklif kabul/red (client)
+
+İş akışı:
+- `POST /api/workflows` workflow oluşturur (admin)
+- `PATCH /api/workflows/:id` workflow günceller (admin)
+- `DELETE /api/workflows/:id` workflow siler (admin)
+- `POST /api/workflows/:id/requests` workflow mesajı/isteği (admin/client)
+
+Dokümanlar:
+- `POST /api/documents` doküman yükleme
+- `GET /api/documents/:id/download` doküman indirme
+- `GET /api/admin/documents` admin doküman liste
+- `DELETE /api/admin/documents/:id` admin doküman sil
+- `POST /api/company/:id/documents` şirket evrağı yükleme (admin)
+
+Şirket kayıtları:
+- `POST /api/company` şirket kaydı oluşturur (admin)
+- `GET /api/company/:id` şirket kaydı getirir (admin/owner)
+
+Bildirimler:
+- `GET /api/notifications` kullanıcı bildirimleri
+- `GET /api/admin/notifications` admin bildirim listesi
+- `POST /api/admin/notifications` yayın bildirimi (admin)
+- `POST /api/notifications/read-all` tümünü okundu yapar
+
+Admin:
+- `GET /api/admin/users` kullanıcı listesi (admin)
+- `POST /api/admin/users` kullanıcı oluşturur (admin)
+- `GET /api/admin/users/:id` kullanıcı detayı (admin)
+- `PATCH /api/admin/users/:id` kullanıcı günceller (admin)
+- `DELETE /api/admin/users/:id` kullanıcı siler (admin)
+- `GET /api/admin/settings` ayarları getirir (admin)
+- `PUT /api/admin/settings` ayar günceller (admin)
+- `GET /api/admin/reports` raporlar (admin)
+- `GET /api/admin/translations` çeviri listesi (admin)
+- `GET /api/admin/audit-logs` audit log listesi (admin)
+
+## Notlar
+- Rate limit mekanizması bellek içidir; çoklu instance/production için Redis gibi bir store önerilir.
+- Lokal doküman yüklemeleri `uploads/` altında tutulur.
